@@ -1,0 +1,155 @@
+/* ============================================================
+   EFFORA Tech — main.js
+   Interacciones de frontend. Sin dependencias.
+   ============================================================ */
+(function () {
+  "use strict";
+
+  /* ---------- Año en el footer ---------- */
+  var yearEl = document.getElementById("year");
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  /* ---------- Header: estado "scrolled" ---------- */
+  var header = document.getElementById("site-header");
+  function onScroll() {
+    if (!header) return;
+    header.classList.toggle("scrolled", window.scrollY > 8);
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  /* ---------- Navegación móvil ---------- */
+  var toggle = document.getElementById("nav-toggle");
+  var menu = document.getElementById("nav-menu");
+
+  function closeMenu() {
+    if (!menu || !toggle) return;
+    menu.classList.remove("open");
+    toggle.setAttribute("aria-expanded", "false");
+    toggle.setAttribute("aria-label", "Abrir menú");
+    document.body.style.overflow = "";
+  }
+  function openMenu() {
+    if (!menu || !toggle) return;
+    menu.classList.add("open");
+    toggle.setAttribute("aria-expanded", "true");
+    toggle.setAttribute("aria-label", "Cerrar menú");
+    document.body.style.overflow = "hidden";
+  }
+
+  if (toggle && menu) {
+    toggle.addEventListener("click", function () {
+      var isOpen = toggle.getAttribute("aria-expanded") === "true";
+      isOpen ? closeMenu() : openMenu();
+    });
+    // Cerrar al elegir un enlace
+    menu.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", closeMenu);
+    });
+    // Cerrar con Escape
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") closeMenu();
+    });
+  }
+
+  /* ---------- Reveals al hacer scroll ---------- */
+  var revealEls = document.querySelectorAll(".reveal");
+  // Mostrar de inmediato lo que ya está visible (hero) y observar el resto.
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in");
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: "0px 0px -40px 0px" });
+    revealEls.forEach(function (el) { io.observe(el); });
+  } else {
+    revealEls.forEach(function (el) { el.classList.add("in"); });
+  }
+
+  // Aplicar la clase reveal a bloques de cada sección de forma no intrusiva.
+  document
+    .querySelectorAll(".section-head, .service-card, .process-step, .results-points li, .results-copy, .contact-copy, .contact-form")
+    .forEach(function (el, i) {
+      el.classList.add("reveal");
+      el.setAttribute("data-delay", String((i % 4) + 1));
+      if ("IntersectionObserver" in window) {
+        var o = new IntersectionObserver(function (entries, obs) {
+          entries.forEach(function (en) {
+            if (en.isIntersecting) { en.target.classList.add("in"); obs.unobserve(en.target); }
+          });
+        }, { threshold: 0.12 });
+        o.observe(el);
+      } else {
+        el.classList.add("in");
+      }
+    });
+
+  /* ---------- Validación del formulario ---------- */
+  var form = document.getElementById("contact-form");
+  var status = document.getElementById("form-status");
+
+  function setError(field, message) {
+    var wrap = field.closest(".field");
+    var err = wrap.querySelector(".field-error");
+    wrap.classList.toggle("invalid", Boolean(message));
+    if (err) err.textContent = message || "";
+  }
+
+  function validateField(field) {
+    var value = field.value.trim();
+    if (field.hasAttribute("required") && !value) {
+      setError(field, "Este campo es obligatorio.");
+      return false;
+    }
+    if (field.type === "email" && value) {
+      var ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+      if (!ok) { setError(field, "Ingresá un email válido."); return false; }
+    }
+    setError(field, "");
+    return true;
+  }
+
+  if (form) {
+    var fields = form.querySelectorAll("input, textarea, select");
+
+    fields.forEach(function (field) {
+      field.addEventListener("blur", function () { validateField(field); });
+      field.addEventListener("input", function () {
+        if (field.closest(".field").classList.contains("invalid")) validateField(field);
+      });
+    });
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var valid = true;
+      var firstInvalid = null;
+      fields.forEach(function (field) {
+        if (!validateField(field)) {
+          valid = false;
+          if (!firstInvalid) firstInvalid = field;
+        }
+      });
+
+      if (!valid) {
+        if (status) {
+          status.textContent = "Revisá los campos marcados.";
+          status.className = "form-status err";
+        }
+        if (firstInvalid) firstInvalid.focus();
+        return;
+      }
+
+      // Frontend listo. Acá se conecta el backend / servicio de email real.
+      // Mientras tanto, simulamos una respuesta exitosa.
+      if (status) {
+        status.textContent = "Gracias. Te respondemos en menos de 24 h hábiles.";
+        status.className = "form-status ok";
+      }
+      form.reset();
+      fields.forEach(function (field) { setError(field, ""); });
+    });
+  }
+})();

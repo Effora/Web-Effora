@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="EFFORA">
+  <g fill="#FFFFFF">
+    <!-- Bracket: vertical bar 14u wide, with short top & bottom arms, outer corners rounded -->
+    <path d="M30 33
+             a7 7 0 0 1 7 -7
+             h9 v13 h-9 v62 h9 v13 h-9
+             a7 7 0 0 1 -7 -7 z"/>
+    <!-- Central tick projecting right: 14u stroke -->
+    <rect x="37" y="53" width="50" height="14"/>
+  </g>
+  <circle cx="99" cy="60" r="7" fill="#F26B1F"/>
+</svg>

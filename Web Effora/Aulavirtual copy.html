@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula Virtual | EFFORA</title>
+    <meta name="robots" content="noindex, nofollow"> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg: #b8937f;
+            --bg-deep: #9f7b68;
+            --bg-soft: #efe5df;
+            --surface: rgba(255, 248, 245, 0.9);
+            --surface-strong: #f8f1ec;
+            --surface-deep: #8f6d5f;
+            --ink: #382822;
+            --ink-soft: rgba(56, 40, 34, 0.74);
+            --line: rgba(77, 51, 42, 0.12);
+            --accent-gold: #D8BF84;
+            --radius-xl: 42px;
+            --radius-lg: 30px;
+            --radius-md: 22px;
+            --shadow-soft: 0 18px 48px rgba(86, 56, 45, 0.12);
+        }
+
+        * { box-sizing: border-box; -webkit-user-select: none; user-select: none; }
+
+        body {
+            margin: 0;
+            font-family: "Manrope", sans-serif;
+            color: var(--ink);
+            background: linear-gradient(180deg, #f8f1ec 0%, #efe5df 100%);
+            min-height: 100vh;
+            display: flex;
+            overflow: hidden;
+        }
+
+        /* LOGIN OVERLAY */
+        #login-overlay {
+            position: fixed; inset: 0; z-index: 9999;
+            background: linear-gradient(135deg, #f8f1ec 0%, #efe5df 100%);
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .login-card {
+            background: white; padding: 50px 40px; border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-soft); width: 100%; max-width: 420px;
+            text-align: center; border: 1px solid var(--line);
+        }
+        .login-card h2 { font-family: 'Outfit', sans-serif; font-weight: 600; margin-bottom: 10px; }
+        .login-card img { width: 160px; margin-bottom: 30px; }
+        .login-card input {
+            width: 100%; padding: 16px; margin-bottom: 15px; border-radius: 15px;
+            border: 1px solid var(--line); background: var(--surface-strong);
+            font-family: inherit; outline: none; transition: 0.3s;
+        }
+        .login-card input:focus { border-color: var(--bg); }
+        .login-btn {
+            width: 100%; padding: 16px; background: var(--bg-deep); color: white;
+            border: none; border-radius: 15px; font-weight: 700;
+            font-family: "Outfit", sans-serif; cursor: pointer; font-size: 1rem;
+        }
+
+        /* DASHBOARD VIEW */
+        #dashboard-view {
+            display: none; width: 100%; min-height: 100vh; padding: 40px 60px;
+            opacity: 0; transition: opacity 0.6s ease; overflow-y: auto;
+        }
+        
+        .dash-top-bar {
+            max-width: 1200px; margin: 0 auto 40px;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+
+        .user-badge {
+            background: white; padding: 8px 16px; border-radius: 50px;
+            border: 1px solid var(--line); display: flex; align-items: center; gap: 10px;
+            font-weight: 700; font-size: 0.85rem; color: var(--surface-deep);
+        }
+
+        .btn-logout-dash {
+            padding: 10px 20px; border: 1.5px solid var(--bg); border-radius: 14px;
+            background: transparent; color: var(--bg-deep); font-weight: 800;
+            cursor: pointer; transition: 0.3s; font-family: 'Manrope'; font-size: 0.8rem;
+        }
+        .btn-logout-dash:hover { background: var(--bg-deep); color: white; }
+
+        .course-card {
+            background: white; border-radius: var(--radius-lg); padding: 35px;
+            border: 1px solid var(--line); box-shadow: var(--shadow-soft);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            cursor: pointer; display: flex; flex-direction: column; 
+            justify-content: space-between; position: relative; overflow: hidden;
+        }
+        .course-card:hover { transform: translateY(-12px); border-color: var(--bg); box-shadow: 0 30px 60px rgba(86, 56, 45, 0.18); }
+        
+        .course-card.is-finished { border-color: var(--accent-gold); background: linear-gradient(to bottom right, #fff, #fdfbf7); }
+        .course-card.is-finished::after {
+            content: '✓ COMPLETADO'; position: absolute; top: 20px; right: -30px;
+            background: var(--accent-gold); color: white; font-size: 9px; font-weight: 900;
+            padding: 5px 40px; transform: rotate(45deg); box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .course-card h3 { font-family: 'Outfit', sans-serif; margin: 10px 0; font-size: 1.4rem; color: var(--ink); }
+        .course-card .tag { font-size: 10px; font-weight: 800; color: var(--accent-gold); text-transform: uppercase; letter-spacing: 1.5px; }
+
+        .btn-enter-course {
+            margin-top: 25px; padding: 14px; background: var(--bg-soft);
+            color: var(--bg-deep); border-radius: 12px; text-align: center;
+            font-weight: 800; transition: 0.3s; font-size: 0.9rem;
+        }
+        .course-card:hover .btn-enter-course { background: var(--bg-deep); color: white; }
+
+        /* AULA VIRTUAL STRUCTURE */
+        .aula-wrapper { display: none; width: 100%; opacity: 0; transition: opacity 0.8s ease; }
+        .aula-wrapper.active { display: flex; opacity: 1; }
+
+        .sidebar {
+            width: 340px; background: var(--surface); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
+            border-right: 1px solid var(--line); display: flex; flex-direction: column;
+            height: 100vh; position: sticky; top: 0; flex-shrink: 0; z-index: 100;
+        }
+        
+        .sidebar-header { padding: 35px 28px; }
+
+        .btn-back-dashboard {
+            display: flex; align-items: center; gap: 8px; margin-bottom: 20px;
+            color: var(--bg-deep); font-weight: 800; font-size: 0.82rem; cursor: pointer;
+            transition: 0.3s; text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .btn-back-dashboard:hover { transform: translateX(-5px); color: var(--ink); }
+
+        .module-list { flex-grow: 1; overflow-y: auto; padding: 10px 28px; }
+        .module-title {
+            font-size: 11px; font-weight: 800; color: var(--accent-gold);
+            margin: 25px 0 12px; text-transform: uppercase; letter-spacing: 0.12em; line-height: 1.4;
+        }
+
+        .lesson {
+            display: flex; align-items: center; gap: 12px; padding: 12px 16px;
+            border-radius: 14px; margin-bottom: 6px; font-size: 0.92rem;
+            font-weight: 500; color: var(--ink); cursor: pointer; transition: 0.2s;
+        }
+        .lesson::before {
+            content: ''; width: 8px; height: 8px; border-radius: 50%;
+            border: 1.5px solid var(--accent-gold); flex-shrink: 0; transition: 0.3s;
+        }
+        .lesson.completed::before { background: var(--accent-gold); box-shadow: 0 0 10px var(--accent-gold); }
+        .lesson:hover { background: rgba(184, 147, 127, 0.1); }
+        .lesson.active { background: var(--bg-deep); color: #fff; font-weight: 600; }
+
+        /* MAIN CONTENT AREA */
+        .main-content { flex-grow: 1; display: flex; flex-direction: column; height: 100vh; overflow-y: auto; background: transparent; }
+        .top-bar { padding: 30px 50px; }
+        .top-bar h1 { font-family: 'Outfit', sans-serif; font-size: 1.8rem; margin: 8px 0 0; }
+        
+        .video-section { padding: 0 50px 80px; max-width: 1100px; margin: 0 auto; width: 100%; }
+        .video-wrapper {
+            position: relative; padding-bottom: 56.25%; background: #1a1412;
+            border-radius: var(--radius-lg); overflow: hidden;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.18); border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .lesson-content { display: none; margin-top: 45px; animation: fadeIn 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards; }
+        .lesson-content.active-content { display: block; }
+        .lesson-content h1 { font-family: 'Outfit', sans-serif; font-size: 2.2rem; color: var(--ink); margin-bottom: 20px; }
+        .lesson-content p { font-size: 1.1rem; line-height: 1.8; color: var(--ink-soft); max-width: 800px; }
+
+        .btn-finish {
+            margin-top: 40px; padding: 18px 35px; background: white;
+            border: 1px solid var(--bg); color: var(--bg-deep); border-radius: 15px;
+            font-weight: 800; font-family: 'Outfit', sans-serif; cursor: pointer;
+            display: inline-flex; align-items: center; gap: 10px; transition: 0.3s;
+        }
+        .btn-finish:hover { background: var(--bg-deep); color: white; transform: translateY(-3px); }
+        .btn-finish.done { background: var(--accent-gold); border-color: var(--accent-gold); color: white; cursor: default; transform: none; }
+
+        /* CERTIFICACIÓN BOTÓN */
+        #btn-certificar {
+            width: 100%; padding: 15px; background: var(--accent-gold); 
+            color: white; border: none; border-radius: 14px; 
+            font-family: 'Outfit'; font-weight: 800; font-size: 12px; 
+            cursor: pointer; text-transform: uppercase; letter-spacing: 1.2px;
+            transition: all 0.4s ease; display: none; margin-top: 15px;
+        }
+        #btn-certificar.ready { animation: pulse 2s infinite; }
+        #btn-certificar.finalized { background: #6a4f44; cursor: default; animation: none; opacity: 0.8; }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(216, 191, 132, 0.7); }
+            70% { transform: scale(1.03); box-shadow: 0 0 0 12px rgba(216, 191, 132, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(216, 191, 132, 0); }
+        }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+
+<body oncontextmenu="return false;">
+
+    <div id="login-overlay">
+        <div class="login-card">
+            <img src="img/LOGO.png" alt="Effora" style="width: 250px; margin-bottom: -10px;">
+            <h2>Acceso Exclusivo</h2>
+            <p style="color: var(--ink-soft); margin-bottom: 30px;">Aula Virtual</p>
+            <form onsubmit="intentarLogin(event)">
+                <input type="text" id="usuario" placeholder="Usuario" required>
+                <input type="password" id="password" placeholder="Contraseña" required>
+                <button type="submit" class="login-btn">ACCEDER</button>
+            </form>
+            <p id="error-login" style="color: #9b2c2c; font-size: 0.85rem; margin-top: 15px; display: none;">Credenciales incorrectas</p>
+        </div>
+    </div>
+
+    <div id="dashboard-view">
+        <div class="dash-top-bar">
+            <div class="user-badge">
+                <span style="opacity: 0.5;">USUARIO:</span>
+                <span id="dash-user-name">---</span>
+            </div>
+            <button class="btn-logout-dash" onclick="cerrarSesion()">CERRAR SESIÓN</button>
+        </div>
+
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <header style="margin-bottom: 60px; text-align: center;">
+                <img src="img/LOGO.png" alt="Effora" style="width: 500px; margin-bottom: 25px;">
+                <h1 id="welcome-title" style="font-family: 'Outfit', sans-serif; color: var(--ink); font-size: 2.8rem; margin:0;">¡Hola! 👋</h1>
+                <p style="color: var(--ink-soft); font-size: 1.1rem; margin-top: 10px;">Bienvenido a tu panel de capacitaciones estratégicas.</p>
+            </header>
+            
+            <div id="courses-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 35px;">
+                </div>
+        </div>
+    </div>
+
+    <div class="aula-wrapper" id="aula-main">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="img/LOGO.png" alt="Effora" style="width: 300px; cursor: pointer;" onclick="volverAlDashboard()">
+            </div>
+            
+            <div style="padding: 0 28px 25px; border-bottom: 1px solid var(--line);">
+                <div class="btn-back-dashboard" onclick="volverAlDashboard()">
+                    <span>← Volver al Panel</span>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; font-size: 10px; font-weight: 800; color: var(--surface-deep); margin-bottom: 10px; letter-spacing: 0.05em;">
+                    <span>PROGRESO DEL PROGRAMA</span>
+                    <span id="progress-percent">0%</span>
+                </div>
+                <div style="height: 6px; background: var(--line); border-radius: 10px; overflow: hidden;">
+                    <div id="progress-bar" style="width: 0%; height: 100%; background: linear-gradient(90deg, var(--accent-gold), var(--bg)); transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);"></div>
+                </div>
+
+                <button id="btn-certificar" onclick="finalizarTodo()">
+                    🏆 Finalizar Capacitación
+                </button>
+            </div>
+
+            <nav class="module-list">
+                <div class="module-group" data-role="todos">
+                    <div class="module-title">Módulo 1:<br>Mentalidad y Posicionamiento</div>
+                    <a class="lesson active" onclick="cambiarClase('clase1.1', this)">1.1 Mercado y oportunidades</a>
+                    <a class="lesson" onclick="cambiarClase('clase1.2', this)">1.2 Comunicación Asertiva</a>
+                    <a class="lesson" onclick="cambiarClase('clase1.3', this)">1.3 El Asesor Consultor</a>
+                </div>
+
+                <div class="module-group" data-role="modulo2">
+                    <div class="module-title">Módulo 2:<br>Conocimiento del Mercado</div>
+                    <a class="lesson" onclick="cambiarClase('clase2.1', this)">2.1 Radiografía del Sector</a>
+                    <a class="lesson" onclick="cambiarClase('clase2.2', this)">2.2 Ejercicios Prácticos</a>
+                </div>
+                <div class="module-group" data-role="modulo3">
+                    <div class="module-title">Módulo 3:<br>test </div>
+                    <a class="lesson active" onclick="cambiarClase('clase1.1', this)">1.1 Mercado y oportunidades</a>
+                    <a class="lesson" onclick="cambiarClase('clase1.2', this)">1.2 Comunicación Asertiva</a>
+                    <a class="lesson" onclick="cambiarClase('clase1.3', this)">1.3 El Asesor Consultor</a>
+                </div>
+              </nav>
+
+            <div style="padding: 25px 28px; border-top: 1px solid var(--line);">
+                <button onclick="cerrarSesion()" style="width:100%; padding:14px; background:none; border:1px solid var(--bg); border-radius:12px; color:var(--bg-deep); font-weight:700; cursor:pointer; font-family:'Manrope'; font-size:0.85rem;">Cerrar Sesión</button>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-bar">
+                <span id="user-greeting-top" style="font-size: 0.8rem; color: var(--accent-gold); font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px;">BIENVENIDO</span>
+                <h1 id="current-clase-title">1.1 Mercado y oportunidades</h1>
+            </header>
+
+            <section class="video-section">
+                <div class="video-wrapper">
+                    <div style="color: white; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; flex-direction: column; background: radial-gradient(circle, rgba(56,40,34,0.2) 0%, rgba(26,20,18,1) 100%);">
+                        <h3 style="color: var(--accent-gold); font-family:'Outfit'; font-size: 1.5rem;">Reproductor EFFORA</h3>
+                        <p style="opacity: 0.6; font-size: 0.9rem;">Contenido Protegido bajo Propiedad Intelectual</p>
+                    </div>
+                </div>
+
+                <div id="clase1.1" class="lesson-content active-content">
+                    <h1>Mercado y oportunidades</h1>
+                    <p>Aprende a detectar las falencias de la competencia y transformarlas en tu mayor activo de venta dentro del sector boutique.</p>
+                    <button class="btn-finish" onclick="marcarComoVista('clase1.1', this)">Finalizar Lección</button>
+                </div>
+                <div id="clase1.2" class="lesson-content">
+                    <h1>Comunicación Asertiva</h1>
+                    <p>La escucha activa es la herramienta más poderosa del asesor inmobiliario de alto rendimiento. Domina el arte de preguntar.</p>
+                    <button class="btn-finish" onclick="marcarComoVista('clase1.2', this)">Finalizar Lección</button>
+                </div>
+                <div id="clase1.3" class="lesson-content">
+                    <h1>El Asesor Consultor</h1>
+                    <p>Deja de mostrar propiedades y empieza a asesorar inversiones de vida. Cambia el paradigma de venta tradicional.</p>
+                    <button class="btn-finish" onclick="marcarComoVista('clase1.3', this)">Finalizar Lección</button>
+                </div>
+                <div id="clase2.1" class="lesson-content">
+                    <h1>Radiografía del Sector</h1>
+                    <p>Análisis profundo de la oferta y demanda en el mercado inmobiliario actual. Datos que definen cierres.</p>
+                    <button class="btn-finish" onclick="marcarComoVista('clase2.1', this)">Finalizar Lección</button>
+                </div>
+                <div id="clase2.2" class="lesson-content">
+                    <h1>Ejercicios Prácticos</h1>
+                    <p>Casos reales de negociación y manejo de objeciones aplicando la metodología de trabajo EFFORA.</p>
+                    <button class="btn-finish" onclick="marcarComoVista('clase2.2', this)">Finalizar Lección</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        const PERFILES = {
+            "admin": { clave: "master99", rol: "admin", nombre: "Administrador" },
+            "asesor": { clave: "effora2026", rol: "asesor", nombre: "Equipo Asesor" },
+            "sol": { clave: "effora222", rol: "asesor", nombre: "Solchis" }
+        };
+
+        const CATALOGO = [
+            { id: 'modulo1', titulo: 'Programa de Asesores', tag: 'Ventas Premium', rol: 'asesor' },
+            { id: 'modulo2', titulo: 'Módulo 2', tag: 'Desarrollo Profesional', rol: 'asesor' },
+            { id: 'modulo3', titulo: 'Módulo 3', tag: 'Estrategia de Mercado', rol: 'asesor' },
+            { id: 'global', titulo: 'Administración Effora', tag: 'Gestión Integral', rol: 'admin' }
+
+        ];
+
+        function intentarLogin(e) {
+            e.preventDefault();
+            const u = document.getElementById('usuario').value.trim();
+            const p = document.getElementById('password').value.trim();
+            if (PERFILES[u] && PERFILES[u].clave === p) {
+                localStorage.setItem('effora_rol', PERFILES[u].rol);
+                localStorage.setItem('effora_auth', 'true');
+                localStorage.setItem('effora_user_name', PERFILES[u].nombre); 
+                entrarDashboard();
+            } else { document.getElementById('error-login').style.display = "block"; }
+        }
+
+        function entrarDashboard() {
+            const nombre = localStorage.getItem('effora_user_name');
+            const rol = localStorage.getItem('effora_rol');
+            
+            // Actualizar Bienvenida y Badge
+            document.getElementById('welcome-title').innerText = `¡Hola, ${nombre}! 👋`;
+            document.getElementById('dash-user-name').innerText = nombre.toUpperCase();
+            document.getElementById('user-greeting-top').innerText = `BIENVENIDO, ${nombre}`;
+
+            document.getElementById('login-overlay').style.opacity = "0";
+            setTimeout(() => {
+                document.getElementById('login-overlay').style.display = "none";
+                const dash = document.getElementById('dashboard-view');
+                dash.style.display = "block";
+                setTimeout(() => dash.style.opacity = "1", 50);
+                renderizarCards(rol);
+            }, 600);
+        }
+
+        function renderizarCards(rol) {
+            const grid = document.getElementById('courses-grid');
+            grid.innerHTML = '';
+            const finalizados = JSON.parse(localStorage.getItem('cursos_finalizados') || '[]');
+
+            CATALOGO.forEach(c => {
+                if (rol === 'admin' || c.rol === rol) {
+                    const estaTerminado = finalizados.includes(c.id);
+                    const card = document.createElement('div');
+                    card.className = `course-card ${estaTerminado ? 'is-finished' : ''}`;
+                    card.onclick = () => abrirAula(rol, c.id);
+                    card.innerHTML = `
+                        <div>
+                            <div class="tag">${c.tag}</div>
+                            <h3>${c.titulo}</h3>
+                            <p style="font-size:14px; color:var(--ink-soft); line-height:1.5;">
+                                ${estaTerminado ? 'Capacitación completada con éxito. Puedes repasar los módulos.' : 'Formación estratégica diseñada para el equipo de alto rendimiento.'}
+                            </p>
+                        </div>
+                        <div class="btn-enter-course">${estaTerminado ? 'REPASAR CONTENIDO' : 'CONTINUAR FORMACIÓN'}</div>
+                    `;
+                    grid.appendChild(card);
+                }
+            });
+        }
+
+        function abrirAula(rol, cursoId) {
+            localStorage.setItem('current_course_id', cursoId);
+            aplicarPermisos(rol);
+            document.getElementById('dashboard-view').style.opacity = "0";
+            setTimeout(() => {
+                document.getElementById('dashboard-view').style.display = "none";
+                const aula = document.getElementById('aula-main');
+                aula.style.display = "flex";
+                setTimeout(() => {
+                    aula.classList.add('active');
+                    cargarProgreso();
+                    actualizarBarraProgreso();
+                }, 50);
+            }, 600);
+        }
+
+        function aplicarPermisos(rol) {
+            document.querySelectorAll('.module-group').forEach(g => {
+                const req = g.getAttribute('data-role');
+                g.style.display = (rol === 'admin' || req === 'todos' || req === rol) ? 'block' : 'none';
+            });
+        }
+
+        function cambiarClase(id, el) {
+            document.querySelectorAll('.lesson-content').forEach(c => c.classList.remove('active-content'));
+            document.querySelectorAll('.lesson').forEach(l => l.classList.remove('active'));
+            document.getElementById(id).classList.add('active-content');
+            el.classList.add('active');
+            document.getElementById('current-clase-title').innerText = el.innerText;
+        }
+
+        function marcarComoVista(id, boton) {
+            const linkSidebar = document.querySelector(`[onclick*="'${id}'"]`);
+            if (linkSidebar) {
+                linkSidebar.classList.add('completed');
+                let comp = JSON.parse(localStorage.getItem('progreso_effora') || '[]');
+                if (!comp.includes(id)) {
+                    comp.push(id);
+                    localStorage.setItem('progreso_effora', JSON.stringify(comp));
+                }
+                actualizarBarraProgreso();
+                boton.innerHTML = "✓ Lección Completada";
+                boton.classList.add('done');
+                boton.onclick = null;
+            }
+        }
+
+        function actualizarBarraProgreso() {
+            const lessons = Array.from(document.querySelectorAll('.lesson')).filter(l => l.parentElement.style.display !== 'none');
+            const comp = JSON.parse(localStorage.getItem('progreso_effora') || '[]');
+            const done = lessons.filter(l => {
+                const id = l.getAttribute('onclick').match(/'([^']+)'/)[1];
+                return comp.includes(id);
+            }).length;
+
+            const perc = lessons.length > 0 ? Math.round((done / lessons.length) * 100) : 0;
+            
+            document.getElementById('progress-bar').style.width = perc + "%";
+            document.getElementById('progress-percent').innerText = perc + "%";
+
+            const btnCert = document.getElementById('btn-certificar');
+            const cursoId = localStorage.getItem('current_course_id');
+            const finalizados = JSON.parse(localStorage.getItem('cursos_finalizados') || '[]');
+
+            if (perc === 100) {
+                btnCert.style.display = "block";
+                if (finalizados.includes(cursoId)) {
+                    btnCert.innerHTML = "✓ Capacitación Finalizada";
+                    btnCert.className = "finalized";
+                    btnCert.onclick = null;
+                } else {
+                    btnCert.innerHTML = "🏆 Finalizar Capacitación";
+                    btnCert.className = "ready";
+                    btnCert.onclick = finalizarTodo;
+                }
+            } else {
+                btnCert.style.display = "none";
+            }
+        }
+
+        function finalizarTodo() {
+            const cursoId = localStorage.getItem('current_course_id');
+            let finalizados = JSON.parse(localStorage.getItem('cursos_finalizados') || '[]');
+            if (!finalizados.includes(cursoId)) {
+                finalizados.push(cursoId);
+                localStorage.setItem('cursos_finalizados', JSON.stringify(finalizados));
+            }
+            alert("¡Felicitaciones! Has completado el programa de formación EFFORA.");
+            actualizarBarraProgreso();
+        }
+
+        function volverAlDashboard() {
+            document.getElementById('aula-main').classList.remove('active');
+            setTimeout(() => {
+                document.getElementById('aula-main').style.display = "none";
+                entrarDashboard();
+            }, 600);
+        }
+
+        function cargarProgreso() {
+            const comp = JSON.parse(localStorage.getItem('progreso_effora') || '[]');
+            comp.forEach(id => {
+                const link = document.querySelector(`[onclick*="'${id}'"]`);
+                if (link) link.classList.add('completed');
+                const contentDiv = document.getElementById(id);
+                if (contentDiv) {
+                    const btn = contentDiv.querySelector('.btn-finish');
+                    if (btn) {
+                        btn.innerHTML = "✓ Lección Completada";
+                        btn.classList.add('done');
+                        btn.onclick = null;
+                    }
+                }
+            });
+        }
+
+        function cerrarSesion() { localStorage.clear(); window.location.reload(); }
+
+        window.onload = () => {
+            if (localStorage.getItem('effora_auth') === 'true') entrarDashboard();
+        };
+
+        // Bloqueos de seguridad
+        document.addEventListener('keydown', e => {
+            if(e.key === 'F12' || (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J'))) e.preventDefault();
+        });
+    </script>
+</body>
+</html>
