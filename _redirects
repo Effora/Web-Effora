@@ -1,0 +1,5 @@
+# Cloudflare Pages — rutas amigables (misma página, sin redirección)
+/aula /Aulavirtual.html 200
+/aula-virtual /Aulavirtual.html 200
+/landing /Landing.html 200
+/sistema-ia /Landing.html 200

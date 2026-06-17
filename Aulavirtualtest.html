@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aula Virtual | EFFORA</title>
+  <meta name="robots" content="noindex, nofollow"> 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/aulavirtual-test.css">
+
+</head>
+
+<body oncontextmenu="return false;">
+
+  <div id="login-overlay">
+    <div class="login-card">
+      <img src="img/LOGO.png" alt="Effora">
+      <h2 style="margin-bottom: 10px;">Bienvenido</h2>
+      <p style="color: var(--ink-soft); margin-bottom: 30px;">Ingresa para acceder a la formación</p>
+      <form onsubmit="intentarLogin(event)">
+        <input type="text" id="usuario" placeholder="Usuario" required>
+        <input type="password" id="password" placeholder="Contraseña" required>
+        <button type="submit" class="login-btn">Acceder al Aula</button>
+      </form>
+      <p id="error-login" style="color: #9b2c2c; font-size: 0.85rem; margin-top: 15px; display: none;">Credenciales incorrectas</p>
+    </div>
+  </div>
+
+  <div class="aula-wrapper" id="aula-main">
+    
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <img src="img/LOGO.png" alt="Effora" style="width: 110px;">
+        <button class="close-btn" id="closeBtn" style="display:none;">&times;</button>
+      </div>
+      
+      <nav class="module-list">
+  <div class="module-group" data-role="todos">
+    <div class="module-title">Introducción</div>
+    <a class="lesson active" onclick="cambiarClase('clase1', this)">1.1 La esencia boutique</a>
+  </div>
+
+  <div class="module-group" data-role="asesor">
+    <div class="module-title">Módulo Asesores</div>
+    <a class="lesson" onclick="cambiarClase('clase2', this)">2.1 Estrategia de Venta</a>
+  </div>
+
+  <div class="module-group" data-role="asistente">
+    <div class="module-title">Módulo Operativo</div>
+    <a class="lesson" onclick="cambiarClase('clase3', this)">3.1 Gestión de CRM</a>
+  </div>
+</nav>
+    </aside>
+
+    <main class="main-content">
+      <header class="top-bar">
+        <button class="menu-toggle" id="menuToggle" style="display:none;"><span></span></button>
+        <h2 id="current-clase-title">1.1 La esencia boutique</h2>
+      </header>
+
+      <section class="video-section">
+        <div class="video-wrapper">
+          <div class="video-placeholder" id="video-box">
+             <div style="color: white; padding: 40px; text-align: center;">
+                <h3 style="color: var(--accent-gold);">Reproductor de Video</h3>
+                <p>El contenido aparecerá aquí</p>
+             </div>
+          </div>
+        </div>
+
+        <div id="clase1" class="lesson-content active-content">
+          <h1>1.1 La esencia boutique</h1>
+          <p>Exploramos cómo proponer un lenguaje visual suave y una comunicación prolija que pone en valor la propiedad y el vínculo.</p>
+        </div>
+
+        <div id="clase2" class="lesson-content">
+          <h1>1.2 Valor diferencial</h1>
+          <p>Identifica qué te hace único en un mercado saturado. El detalle es el nuevo estándar.</p>
+        </div>
+
+        <div id="clase3" class="lesson-content">
+          <h1>2.1 Auditorías y protocolos</h1>
+          <p>Cómo estructurar la revisión de procesos internos para asegurar la excelencia constante.</p>
+        </div>
+
+        <div id="clase4" class="lesson-content">
+          <h1>2.2 Implementación de CRM</h1>
+          <p>Optimiza tu gestión de clientes. Los datos son el corazón de una inmobiliaria moderna.</p>
+        </div>
+
+        <div class="security-badge">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--surface-deep);">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+          </svg>
+          <p>Contenido protegido por EFFORA. Queda prohibida su reproducción externa.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="js/aulavirtual-test.js"></script>
+</body>
+</html>

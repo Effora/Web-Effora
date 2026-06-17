@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aula Virtual | EFFORA</title>
+  <meta name="robots" content="noindex, nofollow"> 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/aulavirtual.css">
+
+</head>
+
+<body oncontextmenu="return false;">
+
+  <div id="login-overlay">
+    <div class="login-card">
+      <img src="img/LOGO.png" alt="Effora">
+      <h2 style="margin-bottom: 10px;">Acceso Exclusivo</h2>
+      <p style="color: var(--ink-soft); margin-bottom: 30px;">Ingresa tus credenciales para continuar</p>
+      <form onsubmit="intentarLogin(event)">
+        <input type="text" id="usuario" placeholder="Usuario" required>
+        <input type="password" id="password" placeholder="Contraseña" required>
+        <button type="submit" class="login-btn">Acceder al Aula</button>
+      </form>
+      <p id="error-login" style="color: #9b2c2c; font-size: 0.85rem; margin-top: 15px; display: none;">Credenciales incorrectas</p>
+    </div>
+  </div>
+
+  <div class="aula-wrapper" id="aula-main">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <img src="img/LOGO.png" alt="Effora" style="width: 110px;">
+      </div>
+      
+      
+      <nav class="module-list">
+        <div style="padding: 0 24px 20px; border-bottom: 1px solid var(--line);">
+    <div style="display: flex; justify-content: space-between; font-size: 10px; font-weight: 800; color: var(--surface-deep); margin-bottom: 8px; letter-spacing: 0.05em;">
+        <span>TU AVANCE</span>
+        <span id="progress-percent">0%</span>
+    </div>
+    <div style="height: 6px; background: var(--line); border-radius: 10px; overflow: hidden; box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);">
+        <div id="progress-bar" style="width: 0%; height: 100%; background: linear-gradient(90deg, var(--accent-gold), var(--bg)); transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);"></div>
+    </div>
+</div>
+        <div class="module-group" data-role="todos">
+          <div class="module-title">Módulo 1:<br>Mentalidad, Posicionamiento y El Diferencial Humano</div>
+          <a class="lesson active" onclick="cambiarClase('clase1.1', this)">1.1 El mercado actual y detectar oportunidades</a>
+          <a class="lesson " onclick="cambiarClase('clase1.2', this)">1.2 Comunicación Asertiva y Escucha Activa</a>
+          <a class="lesson " onclick="cambiarClase('clase1.3', this)">1.3 El Asesor vs. El "Mostrador de Propiedades"</a>
+              <div class="module-group" data-role="asesor">
+          <div class="module-title">Módulo 2: Conocimiento del Mercado ("Dato mata relato")</div>
+          <a class="lesson" onclick="cambiarClase('clase2.1', this)">Radiografía del Mercado Local</a>
+          <a class="lesson" onclick="cambiarClase('clase2.2', this)">Ejercicios de Inmersión</a>
+          <a class="lesson" onclick="cambiarClase('clase2.3', this)">El Asesor como Consultor de Inversiones</a>
+        </div>
+        <div class="module-title">Módulo 2: Conocimiento del Mercado ("Dato mata relato")</div>
+          <a class="lesson" onclick="cambiarClase('clase3.1', this)">La Base de Oro</a>
+          <a class="lesson" onclick="cambiarClase('clase3.2', this)">El Efecto Multiplicador (Círculo de Influencia)</a>
+          <a class="lesson" onclick="cambiarClase('clase3.3', this)">Sistematización del Seguimiento</a>
+        </div>
+
+        <div class="module-group" data-role="asesor">
+          <div class="module-title">Módulo 2: Conocimiento del Mercado ("Dato mata relato")</div>
+          <a class="lesson" onclick="cambiarClase('clase2.1', this)">Radiografía del Mercado Local</a>
+          <a class="lesson" onclick="cambiarClase('clase2.2', this)">Ejercicios de Inmersión</a>
+          <a class="lesson" onclick="cambiarClase('clase2.3', this)">El Asesor como Consultor de Inversiones</a>
+        </div>
+
+        <div class="module-group" data-role="asistente">
+          <div class="module-title">Módulo Operativo</div>
+          <a class="lesson" onclick="cambiarClase('clase3', this)">3.1 Gestión de CRM</a>
+        </div>
+      </nav>
+
+      <div class="logout-box">
+        <button class="logout-btn" onclick="cerrarSesion()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+          Cerrar Sesión
+        </button>
+      </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="top-bar">
+            <div>
+                <span id="user-greeting" style="font-size: 0.8rem; color: var(--accent-gold); font-weight: 700; text-transform: uppercase;">Bienvenido</span>
+                <h1 id="current-clase-title">El mercado actual y detectar oportunidades</h1>
+            </div>
+    </header>
+
+      <section class="video-section">
+        <div class="video-wrapper">
+          <div style="color: white; padding: 40px; text-align: center; position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center;">
+            <h3 style="color: var(--accent-gold);">Reproductor de Video</h3>
+            <p>Contenido Audiovisual Effora</p>
+          </div>
+        </div>
+
+        <div id="clase1.1" class="lesson-content active-content">
+          <h1>El mercado actual y detectar oportunidades</h1>
+          <p>Cómo usar las falencias de la competencia a tu favor (respuestas lentas, falta de escucha, procesos robóticos).</p>
+        </div>
+
+        <div id="clase1.2" class="lesson-content">
+          <h1>Comunicación Asertiva y Escucha Activa</h1>
+          <p>Entender la necesidad real del cliente antes de ofrecer. Vender soluciones, no ladrillos.</p>
+        </div>
+
+        <div id="clase1.3" class="lesson-content">
+          <h1>El Asesor vs. El "Mostrador de Propiedades"</h1>
+          <p>La importancia de diferenciarse en el mercado inmobiliario.</p>
+        </div>
+
+         <div id="clase2.1" class="lesson-content">
+          <h1>Radiografía del Mercado Local</h1>
+          <p>Cómo analizar la oferta y la demanda para hablar con criterio y generar confianza.</p>
+        </div>
+
+        <div id="clase2.2" class="lesson-content">
+          <h1>Ejercicios de Inmersión</h1>
+          <p>Práctica de las habilidades aprendidas en el módulo.</p>
+        </div>
+
+        <div id="clase2.3" class="lesson-content">
+          <h1>El Asesor como Consultor de Inversiones</h1>
+          <p>Cómo posicionarse como experto en el área de inversiones inmobiliarias.</p>
+        </div>
+
+        <div id="clase3.1" class="lesson-content">
+            <h1>La Base de Oro</h1>
+            <p>Cómo construir y nutrir una base de contactos de calidad.</p> 
+        </div>  
+
+        <div id="clase3.2" class="lesson-content">
+            <h1>El Efecto Multiplicador (Círculo de Influencia)</h1>
+            <p>Cómo ampliar tu base de contactos.</p>
+        </div>
+
+        <div id="clase3.3" class="lesson-content">
+            <h1>Sistematización del Seguimiento</h1>
+            <p>Posicionate ante tus contactos. Cómo usar fechas clave y aportar información de valor para tener siempre una "excusa" de contacto válida y no invasiva.</p>
+        </div>
+        
+
+        <div class="security-badge">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--surface-deep);">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+          </svg>
+          <p>Contenido protegido por EFFORA. Queda prohibida su reproducción externa.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="js/aulavirtual.js"></script>
+</body>
+</html>
