@@ -97,6 +97,7 @@
         </dl>
       </div>
       <div class="hero-grid" aria-hidden="true"></div>
+      <div class="hero-glow" aria-hidden="true"></div>
     </section>
 
     <section class="section projects-preview" id="proyectos">
@@ -126,7 +127,6 @@
             <h3>Registro de operaciones</h3>
             <p>Sistema de gestión inmobiliaria completo: registro de operaciones, CRM, objetivos, medición del negocio y landing comercial. Todo lo que la inmobiliaria necesita para operar en un solo producto.</p>
             <div class="project-card-actions">
-              <a href="proyectos.html#registro-operaciones" class="project-link">Ver detalle</a>
               <a href="https://registrodeoperacionesinmobiliarias.com" class="project-link" target="_blank" rel="noopener noreferrer">Ver plataforma</a>
               <a href="https://registrodeoperacionesinmobiliarias.com/landing/" class="project-link" target="_blank" rel="noopener noreferrer">Ver landing</a>
             </div>
@@ -140,7 +140,6 @@
             <h3>CRM inmobiliario</h3>
             <p>Seguimiento de contactos con perfiles múltiples, links enviados por fecha, WhatsApp y email integrados, y sincronización con Google Calendar para no perder visitas ni recordatorios.</p>
             <div class="project-card-actions">
-              <a href="proyectos.html#crm-inmobiliario" class="project-link">Ver detalle</a>
               <a href="https://registrodeoperacionesinmobiliarias.com/landing/crm.html" class="project-link" target="_blank" rel="noopener noreferrer">Ver landing CRM</a>
             </div>
           </article>
@@ -152,31 +151,27 @@
             <span class="project-tag">Dashboard · Tailwind</span>
             <h3>Panel operativo</h3>
             <p>Dashboard con métricas en vivo, acciones rápidas y diseño consistente con Tailwind CSS. Pensado para equipos que necesitan ver el estado del negocio de un vistazo.</p>
-            <a href="proyectos.html#dashboard" class="project-link">Ver detalle</a>
           </article>
 
           <article class="project-card" data-category="plataforma">
             <figure class="project-shot">
-              <img src="assets/projects/oube-sistema.jpg" alt="Sistema interno de gestión Oube con panel administrativo." width="960" height="600" loading="lazy" decoding="async">
+              <img src="assets/projects/oube-landing-new.jpg" alt="Landing pública de Oube Banda Modular con logo, hero y propuesta comercial." width="960" height="600" loading="lazy" decoding="async">
             </figure>
             <span class="project-tag">Gestión interna · Oube</span>
             <h3>Oube</h3>
             <p>Sistema de gestión interna con todo lo que incluye la operación — inventario, pedidos, administración — más su landing pública. Una plataforma completa, no un módulo suelto.</p>
-            <a href="proyectos.html#oube" class="project-link">Ver detalle</a>
+            <div class="project-card-actions">
+              <a href="https://oubebandamodular.com/landing/" class="project-link" target="_blank" rel="noopener noreferrer">Ver landing</a>
+            </div>
           </article>
 
           <article class="project-card" data-category="web plataforma">
             <figure class="project-shot">
               <img src="assets/projects/melioubi-latam-home.jpg" alt="Sitio web de Alejandro Mallo con hero de rock en vivo, navegación y embed de Instagram." width="960" height="600" loading="lazy" decoding="async">
             </figure>
-            <span class="project-tag">Sitio web · Melioubi Latam</span>
-            <h3>Melioubi Latam WebSite</h3>
+            <span class="project-tag">Sitio web ·</span>
+            <h3>Sitio Web</h3>
             <p>Landing para artista de rock: hero inmersivo, trayectoria, banda, carrusel de Instagram y agenda de shows. Diseño mobile-first con SEO, schema.org y accesibilidad.</p>
-            <div class="project-card-actions">
-              <a href="proyectos.html#melioubi-latam" class="project-link">Ver detalle</a>
-              <a href="https://github.com/4GeeksAcademy/melioubi-Latam-WebSite" class="project-link" target="_blank" rel="noopener noreferrer">Ver repo</a>
-              <a href="https://www.alejandromallo.com/" class="project-link" target="_blank" rel="noopener noreferrer">Ver sitio</a>
-            </div>
           </article>
 
           <article class="project-card" data-category="rrhh">
@@ -186,7 +181,6 @@
             <span class="project-tag">Reclutamiento · RR.HH.</span>
             <h3>Formulario de postulación</h3>
             <p>Captación de candidatos para una empresa, con validación accesible, campos condicionales y flujo pensado para el equipo de RR.HH. Menos planillas sueltas, más postulaciones ordenadas.</p>
-            <a href="proyectos.html#nexova" class="project-link">Ver detalle</a>
           </article>
 
           <article class="project-card project-card--featured" data-category="inmobiliario">
@@ -465,7 +459,10 @@
   </main>
 
   <a class="contact-dock-wa" href="https://wa.me/5492236910803?text=Hola%20EFFORA%2C%20quiero%20consultar%20por%20un%20proyecto." target="_blank" rel="noopener noreferrer" aria-label="Consultar por WhatsApp">
-    <span aria-hidden="true">W</span>
+    <span class="contact-dock-wa__bubble" aria-hidden="true">Contactanos</span>
+    <span class="contact-dock-wa__btn">
+      <img class="contact-dock-wa__logo" src="assets/effora-logo-sm.png" alt="" width="52" height="52" decoding="async">
+    </span>
   </a>
 
   <footer class="site-footer">
