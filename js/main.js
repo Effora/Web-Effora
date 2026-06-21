@@ -1,15 +1,40 @@
 /* ============================================================
-   EFFORA Tech — main.js
+   EFFORA — Empresa de Software
    Interacciones de frontend. Sin dependencias.
    ============================================================ */
 (function () {
   "use strict";
 
-  /* ---------- Año en el footer ---------- */
+  var WA_PHONE = "5492236910803";
+  var WA_BASE = "https://wa.me/" + WA_PHONE + "?text=";
+
+  function openWhatsApp(text) {
+    window.open(WA_BASE + encodeURIComponent(text), "_blank", "noopener,noreferrer");
+  }
+
+  function buildWhatsAppFromForm(form) {
+    var name = form.querySelector("#name").value.trim();
+    var email = form.querySelector("#email").value.trim();
+    var companyField = form.querySelector("#company");
+    var company = companyField ? companyField.value.trim() : "";
+    var interest = form.querySelector("#interest");
+    var interestText = interest.options[interest.selectedIndex].text;
+    var message = form.querySelector("#message").value.trim();
+    var lines = [
+      "Hola EFFORA, quiero consultar por un proyecto.",
+      "",
+      "Nombre: " + name,
+      "Email: " + email
+    ];
+    if (company) lines.push("Empresa: " + company);
+    lines.push("Interés: " + interestText);
+    lines.push("Mensaje: " + message);
+    return lines.join("\n");
+  }
+
   var yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  /* ---------- Header: estado "scrolled" ---------- */
   var header = document.getElementById("site-header");
   function onScroll() {
     if (!header) return;
@@ -18,7 +43,6 @@
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
-  /* ---------- Navegación móvil ---------- */
   var toggle = document.getElementById("nav-toggle");
   var menu = document.getElementById("nav-menu");
 
@@ -42,19 +66,15 @@
       var isOpen = toggle.getAttribute("aria-expanded") === "true";
       isOpen ? closeMenu() : openMenu();
     });
-    // Cerrar al elegir un enlace
     menu.querySelectorAll("a").forEach(function (link) {
       link.addEventListener("click", closeMenu);
     });
-    // Cerrar con Escape
     document.addEventListener("keydown", function (e) {
       if (e.key === "Escape") closeMenu();
     });
   }
 
-  /* ---------- Reveals al hacer scroll ---------- */
   var revealEls = document.querySelectorAll(".reveal");
-  // Mostrar de inmediato lo que ya está visible (hero) y observar el resto.
   if ("IntersectionObserver" in window) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
@@ -69,9 +89,8 @@
     revealEls.forEach(function (el) { el.classList.add("in"); });
   }
 
-  // Aplicar la clase reveal a bloques de cada sección de forma no intrusiva.
   document
-    .querySelectorAll(".section-head, .service-card, .process-step, .results-points li, .results-copy, .contact-copy, .contact-form")
+    .querySelectorAll(".section-head, .service-card, .process-step, .results-points li, .results-copy, .contact-copy, .contact-form, .project-card, .product-spotlight-copy, .product-spotlight-aside, .project-detail")
     .forEach(function (el, i) {
       el.classList.add("reveal");
       el.setAttribute("data-delay", String((i % 4) + 1));
@@ -87,7 +106,6 @@
       }
     });
 
-  /* ---------- Validación del formulario ---------- */
   var form = document.getElementById("contact-form");
   var status = document.getElementById("form-status");
 
@@ -142,14 +160,36 @@
         return;
       }
 
-      // Frontend listo. Acá se conecta el backend / servicio de email real.
-      // Mientras tanto, simulamos una respuesta exitosa.
+      openWhatsApp(buildWhatsAppFromForm(form));
       if (status) {
-        status.textContent = "Gracias. Te respondemos en menos de 24 h hábiles.";
+        status.textContent = "Te redirigimos a WhatsApp con tu consulta.";
         status.className = "form-status ok";
       }
       form.reset();
       fields.forEach(function (field) { setError(field, ""); });
+    });
+  }
+
+  var filterBtns = document.querySelectorAll(".filter-btn");
+  var projectCards = document.querySelectorAll(".project-card[data-category]");
+
+  if (filterBtns.length && projectCards.length) {
+    filterBtns.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var filter = btn.getAttribute("data-filter");
+
+        filterBtns.forEach(function (b) {
+          var active = b === btn;
+          b.classList.toggle("is-active", active);
+          b.setAttribute("aria-selected", active ? "true" : "false");
+        });
+
+        projectCards.forEach(function (card) {
+          var categories = card.getAttribute("data-category") || "";
+          var show = filter === "all" || categories.indexOf(filter) !== -1;
+          card.classList.toggle("is-hidden", !show);
+        });
+      });
     });
   }
 })();

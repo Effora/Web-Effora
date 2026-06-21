@@ -3,20 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EFFORA Tech — Automatización con IA, apps, CRMs y webs</title>
-  <meta name="description" content="EFFORA Tech diseña y construye automatizaciones con IA, aplicaciones a medida, CRMs y sitios web para empresas que quieren operar con menos fricción y más velocidad.">
+  <title>Effora — Empresa de Software | Plataformas, IA y sistemas a medida</title>
+  <meta name="description" content="Effora desarrolla software a medida, automatizaciones con IA, CRMs y plataformas web para empresas que buscan escalar su negocio con tecnología confiable.">
   <meta name="theme-color" content="#1A1F26">
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="EFFORA Tech — Efficiency, forward.">
-  <meta property="og:description" content="Automatización con IA, apps, CRMs y webs para equipos que quieren moverse más rápido.">
+  <meta property="og:title" content="Effora — Empresa de Software">
+  <meta property="og:description" content="Software a medida, automatización con IA y plataformas que ordenan tu operación. Proyectos recientes en inmobiliario, e-commerce y RR.HH.">
   <meta property="og:type" content="website">
 
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 
+  <link rel="preload" href="assets/effora-logo-sm.png" as="image" type="image/png">
+  <link rel="preload" href="css/styles.css" as="style">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
 
   <link rel="stylesheet" href="css/styles.css">
 
@@ -24,37 +27,36 @@
   {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "EFFORA Tech",
+    "name": "Effora Empresa de Software",
     "url": "https://effora.com.ar",
-    "email": "gestion@effora.com.ar"
+    "email": "gestion@effora.com.ar",
+    "sameAs": ["https://www.instagram.com/effora.digital/"]
   }
   </script>
 </head>
 <body>
 
-  <!-- Skip link para accesibilidad -->
   <a class="skip-link" href="#main">Saltar al contenido</a>
 
-  <!-- ============ HEADER ============ -->
   <header class="site-header" id="site-header">
     <div class="container header-inner">
-      <a class="brand" href="#top" aria-label="EFFORA Tech — inicio">
-        <svg class="brand-mark" viewBox="0 0 120 120" aria-hidden="true">
-          <path d="M30 33 a7 7 0 0 1 7 -7 h9 v13 h-9 v62 h9 v13 h-9 a7 7 0 0 1 -7 -7 z M37 53 h50 v14 h-50 z" fill="currentColor" fill-rule="evenodd"/>
-          <circle cx="99" cy="60" r="7" fill="var(--forward)"/>
-        </svg>
-        <span class="brand-word">EFFORA<span class="brand-sub">tech</span></span>
+      <a class="brand" href="index.html">
+        <img class="brand-logo" src="assets/effora-logo-sm.png" alt="" width="52" height="52" fetchpriority="high" decoding="async">
+        <span class="brand-text">
+          <span class="brand-word">EFFORA</span>
+          <span class="brand-tagline">Empresa de Software</span>
+        </span>
       </a>
 
       <nav class="nav" aria-label="Principal">
-        <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Abrir menú">
+        <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Abrir menú">
           <span></span><span></span><span></span>
         </button>
         <ul class="nav-menu" id="nav-menu">
+          <li><a href="proyectos.html">Proyectos</a></li>
           <li><a href="#servicios">Servicios</a></li>
-          <li><a href="#proceso">Proceso</a></li>
-          <li><a href="#resultados">Resultados</a></li>
-          <li><a href="#contacto" class="nav-cta">Solicitar diagnóstico</a></li>
+          <li><a href="/sistema-ia">Sistema IA</a></li>
+          <li><a href="https://wa.me/5492236910803?text=Hola%20EFFORA%2C%20quiero%20consultar%20por%20un%20proyecto." class="nav-cta" target="_blank" rel="noopener noreferrer">Consultar por WhatsApp</a></li>
         </ul>
       </nav>
     </div>
@@ -62,56 +64,194 @@
 
   <main id="main">
 
-    <!-- ============ HERO ============ -->
     <section class="hero" id="top">
       <div class="container hero-inner">
         <p class="eyebrow reveal">Efficiency · Forward</p>
         <h1 class="hero-title reveal" data-delay="1">
-          Procesos que trabajan<br>
-          para vos, <span class="accent">no al revés.</span>
+          Tecnología que ordena<br>
+          tu negocio y <span class="accent">lo escala.</span>
         </h1>
         <p class="hero-lead reveal" data-delay="2">
-          Somos una empresa de automatización. Diseñamos y construimos sistemas con
-          inteligencia artificial, aplicaciones, CRMs y sitios web que sacan el trabajo
-          repetitivo de las manos de tu equipo y lo devuelven en horas, no en semanas.
+          Somos Effora, empresa de software. Diseñamos plataformas a medida,
+          automatizaciones con IA y sistemas de gestión para negocios que necesitan
+          menos fricción, más control y resultados medibles en el día a día.
         </p>
         <div class="hero-actions reveal" data-delay="3">
-          <a href="#contacto" class="btn btn-primary">Solicitar diagnóstico</a>
-          <a href="#servicios" class="btn btn-ghost">Ver qué hacemos</a>
+          <a href="https://wa.me/5492236910803?text=Hola%20EFFORA%2C%20quiero%20consultar%20por%20un%20proyecto." class="btn btn-primary" target="_blank" rel="noopener noreferrer">Consultar por WhatsApp</a>
+          <a href="proyectos.html" class="btn btn-ghost">Ver proyectos recientes</a>
         </div>
 
         <dl class="hero-stats reveal" data-delay="4">
           <div>
-            <dt>Tareas automatizadas al mes</dt>
-            <dd>40k<span class="dot">.</span></dd>
+            <dt>Proyectos recientes</dt>
+            <dd>2025–26<span class="dot">.</span></dd>
           </div>
           <div>
-            <dt>Tiempo operativo recuperado</dt>
-            <dd>+30%<span class="dot">.</span></dd>
+            <dt>Rubros que cubrimos</dt>
+            <dd>4+<span class="dot">.</span></dd>
           </div>
           <div>
-            <dt>Proyectos entregados</dt>
-            <dd>120<span class="dot">.</span></dd>
+            <dt>Respuesta comercial</dt>
+            <dd>24 h<span class="dot">.</span></dd>
           </div>
         </dl>
       </div>
       <div class="hero-grid" aria-hidden="true"></div>
     </section>
 
-    <!-- ============ SERVICIOS ============ -->
+    <section class="section projects-preview" id="proyectos">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow">01 · Proyectos recientes</p>
+          <h2 class="section-title">Lo que estamos entregando ahora mismo.</h2>
+          <p class="section-lead">Una selección de desarrollos recientes en producción y staging. Cada uno resuelve una operación concreta del negocio: ventas, gestión interna, e-commerce o captación de talento.</p>
+        </header>
+
+        <div class="filter-bar" role="tablist" aria-label="Filtrar proyectos">
+          <button type="button" class="filter-btn is-active" role="tab" aria-selected="true" data-filter="all">Todos</button>
+          <button type="button" class="filter-btn" role="tab" aria-selected="false" data-filter="inmobiliario">Inmobiliario</button>
+          <button type="button" class="filter-btn" role="tab" aria-selected="false" data-filter="crm">CRM</button>
+          <button type="button" class="filter-btn" role="tab" aria-selected="false" data-filter="ecommerce">E-commerce</button>
+          <button type="button" class="filter-btn" role="tab" aria-selected="false" data-filter="rrhh">RR.HH.</button>
+          <button type="button" class="filter-btn" role="tab" aria-selected="false" data-filter="plataforma">Plataformas</button>
+        </div>
+
+        <div class="project-grid" id="project-grid">
+          <article class="project-card" data-category="inmobiliario plataforma">
+            <figure class="project-shot">
+              <img src="assets/projects/registro-sistema.jpg" alt="Vista del sistema interno de Registro de Operaciones Inmobiliarias con panel de control." width="960" height="600" loading="lazy" decoding="async">
+            </figure>
+            <span class="project-tag">Inmobiliario · Plataforma completa</span>
+            <h3>Registro de operaciones</h3>
+            <p>Sistema de gestión inmobiliaria completo: registro de operaciones, CRM, objetivos, medición del negocio y landing comercial. Todo lo que la inmobiliaria necesita para operar en un solo producto.</p>
+            <div class="project-card-actions">
+              <a href="proyectos.html#registro-operaciones" class="project-link">Ver detalle</a>
+              <a href="https://registrodeoperacionesinmobiliarias.com" class="project-link" target="_blank" rel="noopener noreferrer">Ver plataforma</a>
+              <a href="https://registrodeoperacionesinmobiliarias.com/landing/" class="project-link" target="_blank" rel="noopener noreferrer">Ver landing</a>
+            </div>
+          </article>
+
+          <article class="project-card" data-category="inmobiliario crm plataforma">
+            <figure class="project-shot">
+              <img src="assets/projects/crm-seguimiento.jpg" alt="CRM inmobiliario con ficha de contacto, perfiles múltiples y seguimiento comercial." width="960" height="548" loading="lazy" decoding="async">
+            </figure>
+            <span class="project-tag">CRM · Inmobiliario · Seguimiento</span>
+            <h3>CRM inmobiliario</h3>
+            <p>Seguimiento de contactos con perfiles múltiples, links enviados por fecha, WhatsApp y email integrados, y sincronización con Google Calendar para no perder visitas ni recordatorios.</p>
+            <div class="project-card-actions">
+              <a href="proyectos.html#crm-inmobiliario" class="project-link">Ver detalle</a>
+              <a href="https://registrodeoperacionesinmobiliarias.com/landing/crm.html" class="project-link" target="_blank" rel="noopener noreferrer">Ver landing CRM</a>
+            </div>
+          </article>
+
+          <article class="project-card" data-category="plataforma">
+            <figure class="project-shot">
+              <img src="assets/projects/dashboard-tailwind.jpg" alt="Dashboard operativo construido con Tailwind CSS mostrando métricas y gráficos." width="960" height="600" loading="lazy" decoding="async">
+            </figure>
+            <span class="project-tag">Dashboard · Tailwind</span>
+            <h3>Panel operativo</h3>
+            <p>Dashboard con métricas en vivo, acciones rápidas y diseño consistente con Tailwind CSS. Pensado para equipos que necesitan ver el estado del negocio de un vistazo.</p>
+            <a href="proyectos.html#dashboard" class="project-link">Ver detalle</a>
+          </article>
+
+          <article class="project-card" data-category="plataforma">
+            <figure class="project-shot">
+              <img src="assets/projects/oube-sistema.jpg" alt="Sistema interno de gestión Oube con panel administrativo." width="960" height="600" loading="lazy" decoding="async">
+            </figure>
+            <span class="project-tag">Gestión interna · Oube</span>
+            <h3>Oube</h3>
+            <p>Sistema de gestión interna con todo lo que incluye la operación — inventario, pedidos, administración — más su landing pública. Una plataforma completa, no un módulo suelto.</p>
+            <a href="proyectos.html#oube" class="project-link">Ver detalle</a>
+          </article>
+
+          <article class="project-card" data-category="ecommerce">
+            <figure class="project-shot">
+              <img src="assets/projects/melioubi-tienda.jpg" alt="Vista de tienda de ropa e-commerce con catálogo y ficha de producto." width="960" height="675" loading="lazy" decoding="async">
+            </figure>
+            <span class="project-tag">E-commerce ·</span>
+            <h3>Tienda de ropa</h3>
+            <p>Catálogo, carrito y checkout mobile-first para una marca de indumentaria. Diseño limpio, carga rápida y experiencia de compra pensada desde el celular.</p>
+            <a href="proyectos.html#melioubi" class="project-link">Ver detalle</a>
+          </article>
+
+          <article class="project-card" data-category="rrhh">
+            <figure class="project-shot">
+              <img src="assets/projects/nexova-formulario.jpg" alt="Formulario de postulación accesible con campos de reclutamiento." width="960" height="675" loading="lazy" decoding="async">
+            </figure>
+            <span class="project-tag">Reclutamiento · RR.HH.</span>
+            <h3>Formulario de postulación</h3>
+            <p>Captación de candidatos para una empresa, con validación accesible, campos condicionales y flujo pensado para el equipo de RR.HH. Menos planillas sueltas, más postulaciones ordenadas.</p>
+            <a href="proyectos.html#nexova" class="project-link">Ver detalle</a>
+          </article>
+
+          <article class="project-card project-card--featured" data-category="inmobiliario">
+            <figure class="project-shot">
+              <img src="assets/projects/sistema-ia.jpg" alt="Landing del producto Sistema IA del Agente para asesores inmobiliarios." width="960" height="600" loading="lazy" decoding="async">
+            </figure>
+            <span class="project-tag">Producto · Disponible</span>
+            <h3>Sistema IA del Agente</h3>
+            <p>100 prompts con criterio profesional y plantillas operativas para asesores inmobiliarios. Producto listo para comprar, implementar y usar desde el primer día.</p>
+            <div class="project-card-actions">
+              <a href="/sistema-ia" class="project-link">Ver landing</a>
+              <a href="https://pay.hotmart.com/V105896752E" class="btn btn-primary btn-sm" target="_blank" rel="noopener noreferrer">Comprar ahora</a>
+            </div>
+          </article>
+        </div>
+
+        <p class="projects-more">
+          <a href="proyectos.html" class="btn btn-ghost">Explorar todos los proyectos</a>
+        </p>
+      </div>
+    </section>
+
+    <section class="section product-spotlight" id="producto">
+      <div class="container product-spotlight-inner">
+        <div class="product-spotlight-copy">
+          <p class="eyebrow">Producto Effora</p>
+          <h2 class="section-title">Sistema IA del Agente</h2>
+          <p class="product-spotlight-text">
+            El producto que más piden los equipos inmobiliarios: dejá de improvisar
+            cada mensaje. Prompts de captación, venta, marketing y operaciones, con
+            plantillas listas para WhatsApp, email e Instagram.
+          </p>
+          <ul class="product-spotlight-list">
+            <li>100 prompts con criterio del rubro</li>
+            <li>4 módulos operativos completos</li>
+            <li>Acceso inmediato después del pago</li>
+          </ul>
+          <div class="product-spotlight-actions">
+            <a href="/sistema-ia" class="btn btn-primary">Ver landing del producto</a>
+            <a href="https://pay.hotmart.com/V105896752E" class="btn btn-ghost" target="_blank" rel="noopener noreferrer">Comprar ahora</a>
+          </div>
+        </div>
+        <aside class="product-spotlight-aside" aria-label="Resumen del producto">
+          <figure class="project-shot project-shot--spotlight">
+            <img src="assets/projects/sistema-ia.jpg" alt="Captura de la landing del Sistema IA del Agente." width="960" height="600" loading="lazy" decoding="async">
+          </figure>
+          <p class="mono-label">Incluye</p>
+          <ul class="product-stats">
+            <li><strong>100</strong> prompts profesionales</li>
+            <li><strong>4</strong> plantillas operativas</li>
+            <li><strong>2</strong> bonus de marketing</li>
+            <li><strong>1</strong> sistema, acceso inmediato</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
     <section class="section services" id="servicios">
       <div class="container">
         <header class="section-head">
-          <p class="eyebrow">01 · Lo que hacemos</p>
-          <h2 class="section-title">Cuatro frentes, una misma idea: mover tu operación hacia adelante.</h2>
+          <p class="eyebrow">02 · Servicios</p>
+          <h2 class="section-title">Soluciones que el mercado está pidiendo hoy.</h2>
         </header>
 
         <div class="service-grid">
           <article class="service-card">
             <span class="service-index">/ AI</span>
             <h3>Automatización con IA</h3>
-            <p>Conectamos modelos de lenguaje y agentes a tus procesos reales: clasificación de
-               correos, generación de documentos, atención de primer nivel, análisis de datos.
+            <p>Agentes y flujos conectados a tu operación real: clasificación de correos,
+               generación de documentos, atención de primer nivel y análisis de datos.
                Lo repetitivo deja de consumir personas.</p>
             <ul class="service-list">
               <li>Agentes y asistentes a medida</li>
@@ -123,8 +263,9 @@
           <article class="service-card">
             <span class="service-index">/ APP</span>
             <h3>Aplicaciones a medida</h3>
-            <p>Web apps y herramientas internas pensadas para cómo trabaja tu equipo, no para un
-               manual genérico. Desde un panel de control hasta un producto cara al cliente.</p>
+            <p>Web apps y herramientas internas diseñadas para cómo trabaja tu equipo.
+               Desde un panel de control hasta un producto cara al cliente, con entregas
+               semanales y código que te pertenece.</p>
             <ul class="service-list">
               <li>Producto web y móvil</li>
               <li>Paneles internos y dashboards</li>
@@ -135,23 +276,24 @@
           <article class="service-card">
             <span class="service-index">/ CRM</span>
             <h3>CRMs y sistemas de gestión</h3>
-            <p>Implementamos y personalizamos el CRM que tu negocio necesita, o construimos uno
-               propio. Tu información en un solo lugar, con automatizaciones que la mantienen viva.</p>
+            <p>Implementamos el CRM que tu negocio necesita o construimos uno propio.
+               Tu información en un solo lugar, con automatizaciones que la mantienen
+               actualizada sin trabajo manual.</p>
             <ul class="service-list">
-              <li>Implementación y migración</li>
+              <li>Registro de operaciones y comisiones</li>
               <li>Automatización de ventas y soporte</li>
-              <li>Reportes que se entienden</li>
+              <li>Reportes claros para decidir</li>
             </ul>
           </article>
 
           <article class="service-card">
             <span class="service-index">/ WEB</span>
             <h3>Sitios y plataformas web</h3>
-            <p>Webs rápidas, accesibles y diseñadas para convertir. Desde una landing hasta una
-               plataforma completa, con la misma exigencia técnica en cada pixel.</p>
+            <p>Webs rápidas, accesibles y pensadas para convertir. Landings, e-commerce
+               y plataformas completas con la misma exigencia técnica en cada entrega.</p>
             <ul class="service-list">
               <li>Landings y sitios corporativos</li>
-              <li>E-commerce y plataformas</li>
+              <li>E-commerce y tiendas online</li>
               <li>Rendimiento y SEO técnico</li>
             </ul>
           </article>
@@ -159,55 +301,53 @@
       </div>
     </section>
 
-    <!-- ============ PROCESO ============ -->
     <section class="section process" id="proceso">
       <div class="container">
         <header class="section-head">
-          <p class="eyebrow">02 · Cómo trabajamos</p>
-          <h2 class="section-title">Un proceso corto, sin humo, con entregas que se ven.</h2>
+          <p class="eyebrow">03 · Cómo trabajamos</p>
+          <h2 class="section-title">Implementación clara, sin sorpresas.</h2>
         </header>
 
         <ol class="process-steps">
           <li class="process-step">
             <span class="step-num">01</span>
             <h3>Diagnóstico</h3>
-            <p>Miramos tu operación real y encontramos dónde se pierde tiempo y dinero. Salís de
-               acá con un mapa claro de oportunidades, lo trabajemos juntos o no.</p>
+            <p>Analizamos tu operación y detectamos dónde se pierde tiempo y dinero.
+               Salís con un mapa claro de oportunidades, trabajemos juntos o no.</p>
           </li>
           <li class="process-step">
             <span class="step-num">02</span>
             <h3>Diseño de la solución</h3>
-            <p>Definimos qué se automatiza, qué se construye y en qué orden. Prioridad por impacto:
-               lo que más mueve la aguja, primero.</p>
+            <p>Definimos qué se automatiza, qué se construye y en qué orden.
+               Prioridad por impacto: lo que más mueve la aguja, primero.</p>
           </li>
           <li class="process-step">
             <span class="step-num">03</span>
             <h3>Construcción</h3>
-            <p>Desarrollamos en ciclos cortos con entregas revisables. Nada de cajas negras: ves
-               avances reales cada semana.</p>
+            <p>Ciclos cortos con entregas revisables cada semana. Ves avances reales,
+               no cajas negras ni promesas a largo plazo.</p>
           </li>
           <li class="process-step">
             <span class="step-num">04</span>
             <h3>Soporte y escala</h3>
-            <p>Lo dejamos funcionando, documentado y medible. Después acompañamos para que crezca
-               sin romperse.</p>
+            <p>Dejamos todo funcionando, documentado y medible. Después acompañamos
+               para que crezca sin romperse.</p>
           </li>
         </ol>
       </div>
     </section>
 
-    <!-- ============ RESULTADOS / POR QUÉ EFFORA ============ -->
     <section class="section results" id="resultados">
       <div class="container results-inner">
         <div class="results-copy">
-          <p class="eyebrow">03 · Por qué EFFORA</p>
-          <h2 class="section-title">No gestionamos tu negocio.<br>Lo movemos hacia adelante.</h2>
+          <p class="eyebrow">04 · Por qué Effora</p>
+          <h2 class="section-title">Software pensado para operar,<br>no para impresionar en un pitch.</h2>
           <p class="results-text">
-            Construimos para que funcione cuando no estamos mirando. Cada automatización que
-            entregamos viene con documentación, control de errores y métricas, porque la
-            eficiencia que no se puede medir no sirve.
+            Trabajamos como socios tecnológicos: entendemos la operación, priorizamos
+            lo que genera impacto y entregamos sistemas que tu equipo adopta. Código
+            documentado, métricas claras y propiedad tuya.
           </p>
-          <a href="#contacto" class="btn btn-primary">Empezar una conversación</a>
+          <a href="https://wa.me/5492236910803?text=Hola%20EFFORA%2C%20quiero%20consultar%20por%20un%20proyecto." class="btn btn-primary" target="_blank" rel="noopener noreferrer">Hablar por WhatsApp</a>
         </div>
 
         <ul class="results-points">
@@ -217,7 +357,7 @@
           </li>
           <li>
             <span class="point-k">Medible</span>
-            <p>Definimos los indicadores antes de empezar y los seguimos después.</p>
+            <p>Definimos indicadores antes de empezar y los seguimos después.</p>
           </li>
           <li>
             <span class="point-k">Propiedad</span>
@@ -231,19 +371,45 @@
       </div>
     </section>
 
-    <!-- ============ CONTACTO ============ -->
     <section class="section contact" id="contacto">
       <div class="container contact-inner">
         <div class="contact-copy">
-          <p class="eyebrow">04 · Hablemos</p>
-          <h2 class="section-title">Contanos qué te está frenando.</h2>
+          <p class="eyebrow">05 · Hablemos</p>
+          <h2 class="section-title">Contanos tu proyecto. Te respondemos por WhatsApp.</h2>
           <p class="contact-text">
-            Respondemos en menos de 24 horas hábiles con un primer punto de vista, sin compromiso.
+            Completá el formulario y te abrimos una conversación en WhatsApp con tu
+            consulta armada. Respondemos en menos de 24 horas hábiles, sin compromiso.
           </p>
-          <p class="contact-direct">
-            <span class="mono-label">Escribinos</span>
-            <a href="mailto:gestion@effora.com.ar">gestion@effora.com.ar</a>
-          </p>
+
+          <ul class="contact-channels">
+            <li>
+              <a href="https://wa.me/5492236910803?text=Hola%20EFFORA%2C%20quiero%20consultar%20por%20un%20proyecto." class="contact-channel" target="_blank" rel="noopener noreferrer">
+                <span class="contact-channel-icon" aria-hidden="true">W</span>
+                <span>
+                  <span class="mono-label">WhatsApp</span>
+                  +54 9 223 691-0803
+                </span>
+              </a>
+            </li>
+            <li>
+              <a href="mailto:gestion@effora.com.ar" class="contact-channel">
+                <span class="contact-channel-icon" aria-hidden="true">@</span>
+                <span>
+                  <span class="mono-label">Email</span>
+                  gestion@effora.com.ar
+                </span>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/effora.digital/" class="contact-channel" target="_blank" rel="noopener noreferrer">
+                <span class="contact-channel-icon" aria-hidden="true">Ig</span>
+                <span>
+                  <span class="mono-label">Instagram</span>
+                  @effora.digital
+                </span>
+              </a>
+            </li>
+          </ul>
         </div>
 
         <form class="contact-form" id="contact-form" novalidate>
@@ -270,8 +436,9 @@
               <option value="">Elegí una opción</option>
               <option value="ia">Automatización con IA</option>
               <option value="app">Aplicación a medida</option>
-              <option value="crm">CRM / gestión</option>
+              <option value="crm">CRM / registro de operaciones</option>
               <option value="web">Sitio o plataforma web</option>
+              <option value="producto">Sistema IA del Agente</option>
               <option value="otro">Otra cosa</option>
             </select>
             <span class="field-error" data-for="interest"></span>
@@ -283,32 +450,40 @@
             <span class="field-error" data-for="message"></span>
           </div>
 
-          <button type="submit" class="btn btn-primary btn-block">Enviar</button>
+          <button type="submit" class="btn btn-primary btn-block">Enviar por WhatsApp</button>
           <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+          <p class="form-legal">Al enviar aceptás nuestra <a href="legal/privacidad.html">política de privacidad</a>.</p>
         </form>
       </div>
     </section>
 
   </main>
 
-  <!-- ============ FOOTER ============ -->
+  <a class="contact-dock-wa" href="https://wa.me/5492236910803?text=Hola%20EFFORA%2C%20quiero%20consultar%20por%20un%20proyecto." target="_blank" rel="noopener noreferrer" aria-label="Consultar por WhatsApp">
+    <span aria-hidden="true">W</span>
+  </a>
+
   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-brand">
-        <svg class="brand-mark" viewBox="0 0 120 120" aria-hidden="true">
-          <path d="M30 33 a7 7 0 0 1 7 -7 h9 v13 h-9 v62 h9 v13 h-9 a7 7 0 0 1 -7 -7 z M37 53 h50 v14 h-50 z" fill="currentColor" fill-rule="evenodd"/>
-          <circle cx="99" cy="60" r="7" fill="var(--forward)"/>
-        </svg>
-        <span class="brand-word">EFFORA<span class="brand-sub">tech</span></span>
+        <img class="brand-logo" src="assets/effora-logo-sm.png" alt="" width="52" height="52" fetchpriority="high" decoding="async">
+        <span class="brand-text">
+          <span class="brand-word">EFFORA</span>
+          <span class="brand-tagline">Empresa de Software</span>
+        </span>
       </div>
       <p class="footer-tag mono-label">Efficiency · Forward</p>
       <nav class="footer-nav" aria-label="Pie">
+        <a href="proyectos.html">Proyectos</a>
         <a href="#servicios">Servicios</a>
-        <a href="#proceso">Proceso</a>
-        <a href="#resultados">Resultados</a>
+        <a href="/sistema-ia">Sistema IA del Agente</a>
         <a href="#contacto">Contacto</a>
       </nav>
-      <p class="footer-legal">© <span id="year"></span> EFFORA Tech · hello@effora.tech</p>
+      <nav class="footer-nav footer-nav--legal" aria-label="Legal">
+        <a href="legal/privacidad.html">Privacidad</a>
+        <a href="legal/terminos.html">Términos</a>
+      </nav>
+      <p class="footer-legal">© <span id="year"></span> Effora Empresa de Software · <a href="mailto:gestion@effora.com.ar">gestion@effora.com.ar</a></p>
     </div>
   </footer>
 
