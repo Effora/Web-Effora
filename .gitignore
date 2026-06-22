@@ -5,3 +5,9 @@ node_modules/
 .tmp/
 lighthouse-*.json
 lighthouse-report.json
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+!.env.example
