@@ -13,15 +13,24 @@
 
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 
-  <link rel="preload" href="assets/effora-logo-sm.png" as="image" type="image/png">
   <link rel="preload" href="css/styles.css" as="style">
+  <link rel="stylesheet" href="css/styles.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="css/styles.css"></noscript>
+
+  <style>
+    body { margin: 0; background: #1A1F26; color: #EDEFF2; font-family: system-ui, sans-serif; line-height: 1.6; }
+    .site-header { position: sticky; top: 0; z-index: 100; }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+    .hero { padding-block: 5rem 4rem; }
+    .hero-title { font-weight: 700; font-size: clamp(2.2rem, 9vw, 4rem); line-height: 1.05; margin-top: 1.1rem; }
+    .hero-lead { max-width: 540px; color: #9AA4B0; font-size: 1.05rem; margin-top: 1.4rem; }
+    .eyebrow { font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; color: #F26B1F; }
+  </style>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
-
-  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=optional" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=optional" rel="stylesheet"></noscript>
 
   <script type="application/ld+json">
   {
@@ -108,21 +117,21 @@
           <p class="section-lead">Una selección de desarrollos recientes en producción y staging. Cada uno resuelve una operación concreta del negocio: ventas, gestión interna, e-commerce o captación de talento.</p>
         </header>
 
-        <div class="filter-bar" role="tablist" aria-label="Filtrar proyectos">
-          <button type="button" class="filter-btn is-active" role="tab" aria-selected="true" data-filter="all">Todos</button>
-          <button type="button" class="filter-btn" role="tab" aria-selected="false" data-filter="inmobiliario">Inmobiliario</button>
-          <button type="button" class="filter-btn" role="tab" aria-selected="false" data-filter="crm">CRM</button>
-          <button type="button" class="filter-btn" role="tab" aria-selected="false" data-filter="web">Sitios web</button>
-          <button type="button" class="filter-btn" role="tab" aria-selected="false" data-filter="ecommerce">E-commerce</button>
-          <button type="button" class="filter-btn" role="tab" aria-selected="false" data-filter="rrhh">RR.HH.</button>
-          <button type="button" class="filter-btn" role="tab" aria-selected="false" data-filter="plataforma">Plataformas</button>
+        <div class="filter-bar" role="group" aria-label="Filtrar proyectos">
+          <button type="button" class="filter-btn is-active" aria-pressed="true" data-filter="all">Todos</button>
+          <button type="button" class="filter-btn" aria-pressed="false" data-filter="inmobiliario">Inmobiliario</button>
+          <button type="button" class="filter-btn" aria-pressed="false" data-filter="crm">CRM</button>
+          <button type="button" class="filter-btn" aria-pressed="false" data-filter="web">Sitios web</button>
+          <button type="button" class="filter-btn" aria-pressed="false" data-filter="ecommerce">E-commerce</button>
+          <button type="button" class="filter-btn" aria-pressed="false" data-filter="rrhh">RR.HH.</button>
+          <button type="button" class="filter-btn" aria-pressed="false" data-filter="plataforma">Plataformas</button>
         </div>
 
-        <div class="project-grid" id="project-grid">
+        <div class="project-grid" id="project-grid" aria-live="polite">
           <article class="project-card" data-category="inmobiliario plataforma">
             <a class="project-card-hit" href="proyectos/registro-operaciones.html" target="_blank" rel="noopener noreferrer">
               <figure class="project-shot">
-                <img src="assets/projects/registro-sistema.jpg" alt="Vista del sistema interno de Registro de Operaciones Inmobiliarias con panel de control." width="960" height="600" loading="lazy" decoding="async">
+                <img src="assets/projects/registro-sistema.jpg" srcset="assets/projects/registro-sistema-sm.jpg 480w, assets/projects/registro-sistema.jpg 960w" sizes="(max-width: 767px) 92vw, (max-width: 1023px) 46vw, 380px" alt="Vista del sistema interno de Registro de Operaciones Inmobiliarias con panel de control." width="960" height="600" loading="lazy" decoding="async">
               </figure>
               <span class="project-tag">Inmobiliario · Plataforma completa</span>
               <h2 class="project-card-hit-title">Registro de operaciones</h2>
@@ -138,7 +147,7 @@
           <article class="project-card" data-category="inmobiliario crm plataforma">
             <a class="project-card-hit" href="proyectos/crm-inmobiliario.html" target="_blank" rel="noopener noreferrer">
               <figure class="project-shot">
-                <img src="assets/projects/crm-seguimiento.jpg" alt="CRM inmobiliario con ficha de contacto, perfiles múltiples y seguimiento comercial." width="960" height="548" loading="lazy" decoding="async">
+                <img src="assets/projects/crm-seguimiento.jpg" srcset="assets/projects/crm-seguimiento-sm.jpg 480w, assets/projects/crm-seguimiento.jpg 960w" sizes="(max-width: 767px) 92vw, (max-width: 1023px) 46vw, 380px" alt="CRM inmobiliario con ficha de contacto, perfiles múltiples y seguimiento comercial." width="960" height="548" loading="lazy" decoding="async">
               </figure>
               <span class="project-tag">CRM · Inmobiliario · Seguimiento</span>
               <h2 class="project-card-hit-title">CRM inmobiliario</h2>
@@ -153,7 +162,7 @@
           <article class="project-card" data-category="plataforma">
             <a class="project-card-hit" href="proyectos/dashboard.html" target="_blank" rel="noopener noreferrer">
               <figure class="project-shot">
-                <img src="assets/projects/dashboard-tailwind.jpg" alt="Dashboard operativo construido con Tailwind CSS mostrando métricas y gráficos." width="960" height="600" loading="lazy" decoding="async">
+                <img src="assets/projects/dashboard-tailwind.jpg" srcset="assets/projects/dashboard-tailwind-sm.jpg 480w, assets/projects/dashboard-tailwind.jpg 960w" sizes="(max-width: 767px) 92vw, (max-width: 1023px) 46vw, 380px" alt="Dashboard operativo construido con Tailwind CSS mostrando métricas y gráficos." width="960" height="600" loading="lazy" decoding="async">
               </figure>
               <span class="project-tag">Dashboard · Tailwind</span>
               <h2 class="project-card-hit-title">Panel operativo</h2>
@@ -165,7 +174,7 @@
           <article class="project-card" data-category="plataforma ecommerce">
             <a class="project-card-hit" href="proyectos/oube.html" target="_blank" rel="noopener noreferrer">
               <figure class="project-shot">
-                <img src="assets/projects/oube-landing-new.jpg" alt="Landing pública de Oube Banda Modular con logo, hero y propuesta comercial." width="960" height="600" loading="lazy" decoding="async">
+                <img src="assets/projects/oube-landing-new.jpg" srcset="assets/projects/oube-landing-new-sm.jpg 480w, assets/projects/oube-landing-new.jpg 960w" sizes="(max-width: 767px) 92vw, (max-width: 1023px) 46vw, 380px" alt="Landing pública de Oube Banda Modular con logo, hero y propuesta comercial." width="960" height="600" loading="lazy" decoding="async">
               </figure>
               <span class="project-tag">E-commerce · Gestión · Oube</span>
               <h2 class="project-card-hit-title">Oube</h2>
@@ -180,7 +189,7 @@
           <article class="project-card" data-category="web plataforma">
             <a class="project-card-hit" href="proyectos/melioubi-latam.html" target="_blank" rel="noopener noreferrer">
               <figure class="project-shot">
-                <img src="assets/projects/melioubi-latam-home.jpg" alt="Sitio web de Alejandro Mallo con hero de rock en vivo, navegación y embed de Instagram." width="960" height="600" loading="lazy" decoding="async">
+                <img src="assets/projects/melioubi-latam-home.jpg" srcset="assets/projects/melioubi-latam-home-sm.jpg 480w, assets/projects/melioubi-latam-home.jpg 960w" sizes="(max-width: 767px) 92vw, (max-width: 1023px) 46vw, 380px" alt="Sitio web de Alejandro Mallo con hero de rock en vivo, navegación y embed de Instagram." width="960" height="600" loading="lazy" decoding="async">
               </figure>
               <span class="project-tag">Sitio web ·</span>
               <h2 class="project-card-hit-title">Sitio Web</h2>
@@ -192,7 +201,7 @@
           <article class="project-card" data-category="rrhh">
             <a class="project-card-hit" href="proyectos/nexova.html" target="_blank" rel="noopener noreferrer">
               <figure class="project-shot">
-                <img src="assets/projects/nexova-formulario.jpg" alt="Formulario de postulación accesible con campos de reclutamiento." width="960" height="675" loading="lazy" decoding="async">
+                <img src="assets/projects/nexova-formulario.jpg" srcset="assets/projects/nexova-formulario-sm.jpg 480w, assets/projects/nexova-formulario.jpg 960w" sizes="(max-width: 767px) 92vw, (max-width: 1023px) 46vw, 380px" alt="Formulario de postulación accesible con campos de reclutamiento." width="960" height="675" loading="lazy" decoding="async">
               </figure>
               <span class="project-tag">Reclutamiento · RR.HH.</span>
               <h2 class="project-card-hit-title">Formulario de postulación</h2>
@@ -204,7 +213,7 @@
           <article class="project-card project-card--featured" data-category="inmobiliario">
             <a class="project-card-hit" href="proyectos/sistema-ia.html" target="_blank" rel="noopener noreferrer">
               <figure class="project-shot">
-                <img src="assets/projects/sistema-ia.jpg" alt="Landing del producto Sistema IA del Agente para asesores inmobiliarios." width="960" height="600" loading="lazy" decoding="async">
+                <img src="assets/projects/sistema-ia.jpg" srcset="assets/projects/sistema-ia-sm.jpg 480w, assets/projects/sistema-ia.jpg 960w" sizes="(max-width: 767px) 92vw, (max-width: 1023px) 46vw, 380px" alt="Landing del producto Sistema IA del Agente para asesores inmobiliarios." width="960" height="600" loading="lazy" decoding="async">
               </figure>
               <span class="project-tag">Producto · Disponible</span>
               <h2 class="project-card-hit-title">Sistema IA del Agente</h2>
@@ -246,7 +255,7 @@
         </div>
         <aside class="product-spotlight-aside" aria-label="Resumen del producto">
           <figure class="project-shot project-shot--spotlight">
-            <img src="assets/projects/sistema-ia.jpg" alt="Captura de la landing del Sistema IA del Agente." width="960" height="600" loading="lazy" decoding="async">
+            <img src="assets/projects/sistema-ia.jpg" srcset="assets/projects/sistema-ia-sm.jpg 480w, assets/projects/sistema-ia.jpg 960w" sizes="(max-width: 767px) 92vw, 520px" alt="Captura de la landing del Sistema IA del Agente." width="960" height="600" loading="lazy" decoding="async">
           </figure>
           <p class="mono-label">Incluye</p>
           <ul class="product-stats">
@@ -510,6 +519,6 @@
     </div>
   </footer>
 
-  <script src="js/main.js"></script>
+  <script src="js/main.js" defer></script>
 </body>
 </html>

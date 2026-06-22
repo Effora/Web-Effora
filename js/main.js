@@ -36,12 +36,22 @@
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
   var header = document.getElementById("site-header");
-  function onScroll() {
+  var scrollTicking = false;
+
+  function updateHeaderScroll() {
+    scrollTicking = false;
     if (!header) return;
     header.classList.toggle("scrolled", window.scrollY > 8);
   }
+
+  function onScroll() {
+    if (scrollTicking) return;
+    scrollTicking = true;
+    requestAnimationFrame(updateHeaderScroll);
+  }
+
   window.addEventListener("scroll", onScroll, { passive: true });
-  onScroll();
+  requestAnimationFrame(updateHeaderScroll);
 
   var toggle = document.getElementById("nav-toggle");
   var menu = document.getElementById("nav-menu");
@@ -74,37 +84,28 @@
     });
   }
 
+  var autoReveal = document.querySelectorAll(
+    ".section-head, .service-card, .process-step, .results-points li, .results-copy, .contact-copy, .contact-form, .project-card, .product-spotlight-copy, .product-spotlight-aside, .project-detail"
+  );
+  autoReveal.forEach(function (el, i) {
+    el.classList.add("reveal");
+    el.setAttribute("data-delay", String((i % 4) + 1));
+  });
+
   var revealEls = document.querySelectorAll(".reveal");
-  if ("IntersectionObserver" in window) {
-    var io = new IntersectionObserver(function (entries) {
+  if ("IntersectionObserver" in window && revealEls.length) {
+    var revealObserver = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
           entry.target.classList.add("in");
-          io.unobserve(entry.target);
+          revealObserver.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.15, rootMargin: "0px 0px -40px 0px" });
-    revealEls.forEach(function (el) { io.observe(el); });
+    }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+    revealEls.forEach(function (el) { revealObserver.observe(el); });
   } else {
     revealEls.forEach(function (el) { el.classList.add("in"); });
   }
-
-  document
-    .querySelectorAll(".section-head, .service-card, .process-step, .results-points li, .results-copy, .contact-copy, .contact-form, .project-card, .product-spotlight-copy, .product-spotlight-aside, .project-detail")
-    .forEach(function (el, i) {
-      el.classList.add("reveal");
-      el.setAttribute("data-delay", String((i % 4) + 1));
-      if ("IntersectionObserver" in window) {
-        var o = new IntersectionObserver(function (entries, obs) {
-          entries.forEach(function (en) {
-            if (en.isIntersecting) { en.target.classList.add("in"); obs.unobserve(en.target); }
-          });
-        }, { threshold: 0.12 });
-        o.observe(el);
-      } else {
-        el.classList.add("in");
-      }
-    });
 
   var form = document.getElementById("contact-form");
   var status = document.getElementById("form-status");
@@ -181,7 +182,7 @@
         filterBtns.forEach(function (b) {
           var active = b === btn;
           b.classList.toggle("is-active", active);
-          b.setAttribute("aria-selected", active ? "true" : "false");
+          b.setAttribute("aria-pressed", active ? "true" : "false");
         });
 
         projectCards.forEach(function (card) {
