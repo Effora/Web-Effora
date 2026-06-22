@@ -30,7 +30,7 @@
     .hero-lead { max-width: 540px; color: #9AA4B0; font-size: 1.05rem; margin-top: 1.4rem; }
     .eyebrow { font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; color: #F26B1F; }
     .hero .reveal { opacity: 1; transform: none; }
-    .contact-dock-wa { position: fixed; right: 1rem; bottom: 1rem; z-index: 90; width: 68px; height: 68px; }
+    .contact-dock-wa { position: fixed; right: 1rem; bottom: 1rem; z-index: 90; display: flex; align-items: flex-end; gap: .55rem; }
     @media (min-width: 860px) {
       .hero-layout { grid-template-columns: 1fr auto; gap: 2rem 3rem; }
       .hero-media { justify-content: flex-end; min-height: 540px; }
@@ -123,7 +123,7 @@
             <div class="hero-phone__shell">
               <span class="hero-phone__notch" aria-hidden="true"></span>
               <div class="hero-phone__screen">
-                <video class="hero-phone__video" id="hero-phone-video" width="1080" height="1920" muted loop playsinline webkit-playsinline preload="none" poster="assets/videos/effora-hero-poster.jpg" data-src="assets/videos/effora-hero-reel.mp4" title="Video de Effora"></video>
+                <video class="hero-phone__video" id="hero-phone-video" width="1080" height="1920" muted loop playsinline webkit-playsinline preload="none" poster="assets/videos/effora-hero-frame.jpg" data-src="assets/videos/effora-hero-reel.mp4" title="Video de Effora"></video>
                 <button type="button" class="hero-phone__audio" id="hero-phone-audio" aria-label="Activar audio del video" aria-pressed="false">
                   <svg class="hero-phone__audio-icon hero-phone__audio-icon--muted" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                     <path d="M11 5L6 9H3v6h3l5 4V5z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>

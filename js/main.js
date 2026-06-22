@@ -185,6 +185,7 @@
   function playHeroVideo() {
     if (!heroVideo) return;
     heroVideo.classList.add("is-playing");
+    heroVideo.removeAttribute("poster");
     heroVideo.play().catch(function () {});
   }
 

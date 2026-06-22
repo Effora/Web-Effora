@@ -317,6 +317,9 @@ input, textarea, select { font: inherit; }
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
 }
+.hero-phone__video.is-playing {
+  background: #000;
+}
 .hero-phone__audio {
   position: absolute;
   right: 10px;
@@ -961,6 +964,7 @@ input, textarea, select { font: inherit; }
   display: flex;
   align-items: flex-end;
   gap: .55rem;
+  max-width: calc(100vw - 2rem);
   text-decoration: none;
   color: inherit;
 }
@@ -975,6 +979,7 @@ input, textarea, select { font: inherit; }
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
   border: 1px solid rgba(255, 255, 255, 0.12);
   white-space: nowrap;
+  flex-shrink: 0;
 }
 .contact-dock-wa__btn {
   flex-shrink: 0;
