@@ -582,9 +582,62 @@ input, textarea, select { font: inherit; }
   text-transform: uppercase;
   color: var(--forward);
 }
-.project-card h3 {
+.project-card h3,
+.project-card-hit-title {
   font-weight: 600;
   font-size: 1.2rem;
+}
+.project-card-hit {
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+  color: inherit;
+  text-decoration: none;
+  flex-grow: 1;
+}
+.project-card-hit:hover .project-card-hit-title {
+  color: var(--forward);
+}
+.project-card-hit .project-shot { margin: 0; }
+.project-card-open-label {
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--forward);
+  margin-top: auto;
+}
+.project-card-actions {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .65rem;
+  align-items: center;
+  margin-top: .25rem;
+}
+.project-page {
+  padding-block: 2rem 4rem;
+}
+.project-back {
+  margin-bottom: 1.5rem;
+}
+.project-back a {
+  font-weight: 600;
+  font-size: .92rem;
+  color: var(--text-dim);
+  transition: color .2s var(--ease);
+}
+.project-back a:hover { color: var(--forward); }
+.project-detail--solo {
+  border-top: none;
+  padding-top: 0;
+}
+.project-detail--solo h1 {
+  font-weight: 700;
+  font-size: clamp(1.75rem, 5vw, 2.4rem);
+  line-height: 1.15;
+  margin-top: .5rem;
 }
 .project-card p { color: var(--text-dim); font-size: .95rem; flex-grow: 1; }
 .project-link {
@@ -595,13 +648,6 @@ input, textarea, select { font: inherit; }
 }
 .project-link:hover { color: var(--forward); }
 .project-link--accent { color: var(--forward); }
-.project-card-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: .65rem;
-  align-items: center;
-  margin-top: .25rem;
-}
 .btn-sm {
   padding: .65rem 1.15rem;
   font-size: .88rem;
