@@ -42,13 +42,15 @@ function loadRedirects() {
 const redirects = loadRedirects();
 
 function resolvePath(urlPath) {
-  if (urlPath === "/") return "/index.html";
+  if (urlPath === "/") return { file: "/index.html" };
 
   const rule = redirects.get(urlPath);
   if (rule) {
     if (rule.status >= 300 && rule.status < 400) return { redirect: rule.to, status: rule.status };
     return { file: rule.to.startsWith("/") ? rule.to : `/${rule.to}` };
   }
+
+  if (urlPath.endsWith("/")) return { file: `${urlPath}index.html` };
 
   return { file: urlPath };
 }

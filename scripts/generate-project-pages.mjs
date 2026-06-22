@@ -37,9 +37,9 @@ const shell = (title, desc, body) => `<!DOCTYPE html>
           <span></span><span></span><span></span>
         </button>
         <ul class="nav-menu" id="nav-menu">
-          <li><a href="../proyectos.html" aria-current="page">Proyectos</a></li>
-          <li><a href="../index.html#servicios">Servicios</a></li>
-          <li><a href="../Landing.html">Sistema IA</a></li>
+          <li><a href="/proyectos/" aria-current="page">Proyectos</a></li>
+          <li><a href="/#servicios">Servicios</a></li>
+          <li><a href="/sistema-ia">Sistema IA</a></li>
           <li><a href="https://wa.me/5492236910803?text=Hola%20EFFORA%2C%20quiero%20consultar%20por%20un%20proyecto." class="nav-cta" target="_blank" rel="noopener noreferrer">Consultar por WhatsApp</a></li>
         </ul>
       </nav>
@@ -47,7 +47,7 @@ const shell = (title, desc, body) => `<!DOCTYPE html>
   </header>
   <main id="main" class="project-page">
     <div class="container">
-      <p class="project-back"><a href="../proyectos.html">← Todos los proyectos</a></p>
+      <p class="project-back"><a href="/proyectos/">← Todos los proyectos</a></p>
 ${body}
     </div>
   </main>
@@ -68,10 +68,10 @@ ${body}
       </div>
       <p class="footer-tag mono-label">Efficiency · Forward</p>
       <nav class="footer-nav" aria-label="Pie">
-        <a href="../proyectos.html">Proyectos</a>
-        <a href="../index.html#servicios">Servicios</a>
-        <a href="../Landing.html">Sistema IA del Agente</a>
-        <a href="../index.html#contacto">Contacto</a>
+        <a href="/proyectos/">Proyectos</a>
+        <a href="/#servicios">Servicios</a>
+        <a href="/sistema-ia">Sistema IA del Agente</a>
+        <a href="/#contacto">Contacto</a>
       </nav>
       <p class="footer-legal">© <span id="year"></span> Effora Empresa de Software · <a href="mailto:gestion@effora.com.ar">gestion@effora.com.ar</a></p>
     </div>
