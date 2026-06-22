@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+# Mapa para agentes IA: https://effora.com.ar/llms.txt

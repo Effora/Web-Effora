@@ -93,7 +93,11 @@
   });
 
   var revealEls = document.querySelectorAll(".reveal");
-  if ("IntersectionObserver" in window && revealEls.length) {
+  var isDesktop = window.matchMedia("(min-width: 860px)").matches;
+
+  if (isDesktop) {
+    revealEls.forEach(function (el) { el.classList.add("in"); });
+  } else if ("IntersectionObserver" in window && revealEls.length) {
     var revealObserver = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
@@ -176,14 +180,56 @@
 
   var heroVideo = document.getElementById("hero-phone-video");
   var heroAudioBtn = document.getElementById("hero-phone-audio");
+  var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  if (heroVideo && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  function playHeroVideo() {
+    if (!heroVideo) return;
+    heroVideo.classList.add("is-playing");
     heroVideo.play().catch(function () {});
+  }
+
+  function loadHeroVideo() {
+    if (!heroVideo || heroVideo.dataset.loaded === "true") return;
+    heroVideo.dataset.loaded = "true";
+    var src = heroVideo.dataset.src;
+    if (src && !heroVideo.getAttribute("src")) {
+      heroVideo.setAttribute("src", src);
+      heroVideo.load();
+    }
+    if (heroVideo.readyState >= 2) {
+      playHeroVideo();
+    } else {
+      heroVideo.addEventListener("loadeddata", playHeroVideo, { once: true });
+      heroVideo.addEventListener("canplay", playHeroVideo, { once: true });
+    }
+  }
+
+  if (heroVideo && !prefersReducedMotion) {
+    heroVideo.setAttribute("playsinline", "");
+    heroVideo.setAttribute("webkit-playsinline", "");
+
+    if (isDesktop) {
+      if ("IntersectionObserver" in window) {
+        var desktopVideoObserver = new IntersectionObserver(function (entries) {
+          if (!entries[0].isIntersecting) return;
+          if ("requestIdleCallback" in window) {
+            requestIdleCallback(loadHeroVideo, { timeout: 2500 });
+          } else {
+            loadHeroVideo();
+          }
+          desktopVideoObserver.disconnect();
+        }, { rootMargin: "80px" });
+        desktopVideoObserver.observe(heroVideo);
+      }
+    } else {
+      loadHeroVideo();
+    }
   }
 
   if (heroVideo && heroAudioBtn) {
     heroAudioBtn.addEventListener("click", function (e) {
       e.stopPropagation();
+      loadHeroVideo();
       var willUnmute = heroVideo.muted;
       heroVideo.muted = !willUnmute;
       heroAudioBtn.classList.toggle("is-unmuted", willUnmute);

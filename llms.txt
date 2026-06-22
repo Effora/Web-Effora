@@ -1,0 +1,32 @@
+# Effora Empresa de Software
+
+> Empresa de software en Argentina. Plataformas a medida, automatización con IA, CRMs y sistemas web para inmobiliarias, e-commerce y RR.HH.
+
+## Páginas principales
+
+- [Inicio](https://effora.com.ar/)
+- [Proyectos](https://effora.com.ar/proyectos/)
+- [Sistema IA del Agente](https://effora.com.ar/sistema-ia)
+- [Contacto](https://effora.com.ar/#contacto)
+- [Privacidad](https://effora.com.ar/legal/privacidad.html)
+- [Términos](https://effora.com.ar/legal/terminos.html)
+
+## Fichas de proyecto
+
+- [Registro de operaciones inmobiliarias](https://effora.com.ar/ficha/registro-operaciones.html)
+- [CRM inmobiliario](https://effora.com.ar/ficha/crm-inmobiliario.html)
+- [Panel operativo (dashboard)](https://effora.com.ar/ficha/dashboard.html)
+- [Oube (e-commerce y gestión)](https://effora.com.ar/ficha/oube.html)
+- [Sitio web Melioubi Latam](https://effora.com.ar/ficha/melioubi-latam.html)
+- [Formulario de postulación (RR.HH.)](https://effora.com.ar/ficha/nexova.html)
+- [Sistema IA del Agente (producto)](https://effora.com.ar/ficha/sistema-ia.html)
+
+## Contacto
+
+- [WhatsApp +54 9 223 691-0803](https://wa.me/5492236910803)
+- [Email gestion@effora.com.ar](mailto:gestion@effora.com.ar)
+- [Instagram Effora](https://www.instagram.com/effora.digital/)
+
+## Servicios
+
+Automatización con IA, aplicaciones a medida, CRMs, sitios y plataformas web, registro de operaciones inmobiliarias.

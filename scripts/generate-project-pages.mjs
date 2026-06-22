@@ -52,7 +52,7 @@ ${body}
     </div>
   </main>
   <a class="contact-dock-wa" href="https://wa.me/5492236910803?text=Hola%20EFFORA%2C%20quiero%20consultar%20por%20un%20proyecto." target="_blank" rel="noopener noreferrer" aria-label="Consultar por WhatsApp">
-    <span class="contact-dock-wa__bubble" aria-hidden="true">Contactanos</span>
+    <span class="contact-dock-wa__bubble" aria-hidden="true">Contactanos!</span>
     <span class="contact-dock-wa__btn">
       <img class="contact-dock-wa__logo" src="../assets/effora-logo-sm.png" alt="" width="52" height="52" decoding="async">
     </span>

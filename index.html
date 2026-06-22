@@ -13,24 +13,35 @@
 
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 
-  <link rel="preload" href="css/styles.css" as="style">
-  <link rel="stylesheet" href="css/styles.css" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="css/styles.css"></noscript>
+  <link rel="stylesheet" href="css/styles.css">
 
   <style>
     body { margin: 0; background: #1A1F26; color: #EDEFF2; font-family: system-ui, sans-serif; line-height: 1.6; }
     .site-header { position: sticky; top: 0; z-index: 100; }
     .header-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
-    .hero { padding-block: 5rem 4rem; }
+    .container { width: 100%; max-width: 1180px; margin-inline: auto; padding-inline: 1.25rem; }
+    .hero { padding-block: 5rem 4rem; position: relative; overflow: hidden; }
+    .hero-layout { display: grid; gap: 2rem; align-items: center; position: relative; z-index: 1; }
+    .hero-media { display: flex; justify-content: center; width: 100%; min-height: 420px; }
+    .hero-phone__shell { display: block; width: min(240px, 68vw); aspect-ratio: 9 / 19.5; position: relative; box-sizing: border-box; }
+    .hero-phone__screen { position: absolute; inset: 9px; border-radius: 26px; overflow: hidden; background: #000; }
+    .hero-phone__video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; background: #000; }
     .hero-title { font-weight: 700; font-size: clamp(2.2rem, 9vw, 4rem); line-height: 1.05; margin-top: 1.1rem; }
     .hero-lead { max-width: 540px; color: #9AA4B0; font-size: 1.05rem; margin-top: 1.4rem; }
     .eyebrow { font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; color: #F26B1F; }
+    .hero .reveal { opacity: 1; transform: none; }
+    .contact-dock-wa { position: fixed; right: 1rem; bottom: 1rem; z-index: 90; width: 68px; height: 68px; }
+    @media (min-width: 860px) {
+      .hero-layout { grid-template-columns: 1fr auto; gap: 2rem 3rem; }
+      .hero-media { justify-content: flex-end; min-height: 540px; }
+      .hero-phone__shell { width: min(270px, 28vw); }
+    }
   </style>
+  <link rel="alternate" type="text/plain" href="/llms.txt" title="Información del sitio para agentes IA">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=optional" rel="stylesheet" media="print" onload="this.media='all'">
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=optional" rel="stylesheet"></noscript>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=optional" rel="stylesheet">
 
   <script type="application/ld+json">
   {
@@ -112,7 +123,7 @@
             <div class="hero-phone__shell">
               <span class="hero-phone__notch" aria-hidden="true"></span>
               <div class="hero-phone__screen">
-                <video class="hero-phone__video" id="hero-phone-video" src="assets/videos/effora-hero-reel.mp4" width="1080" height="1920" muted loop playsinline preload="metadata" title="Video de Effora"></video>
+                <video class="hero-phone__video" id="hero-phone-video" width="1080" height="1920" muted loop playsinline webkit-playsinline preload="none" poster="assets/videos/effora-hero-poster.jpg" data-src="assets/videos/effora-hero-reel.mp4" title="Video de Effora"></video>
                 <button type="button" class="hero-phone__audio" id="hero-phone-audio" aria-label="Activar audio del video" aria-pressed="false">
                   <svg class="hero-phone__audio-icon hero-phone__audio-icon--muted" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                     <path d="M11 5L6 9H3v6h3l5 4V5z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
