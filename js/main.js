@@ -174,6 +174,11 @@
   var filterBtns = document.querySelectorAll(".filter-btn");
   var projectCards = document.querySelectorAll(".project-card[data-category]");
 
+  var heroVideo = document.querySelector(".hero-phone__video");
+  if (heroVideo && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    heroVideo.play().catch(function () {});
+  }
+
   if (filterBtns.length && projectCards.length) {
     filterBtns.forEach(function (btn) {
       btn.addEventListener("click", function () {
