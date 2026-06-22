@@ -185,7 +185,7 @@
         });
 
         projectCards.forEach(function (card) {
-          var categories = card.getAttribute("data-category") || "";
+          var categories = (card.getAttribute("data-category") || "").trim().split(/\s+/);
           var show = filter === "all" || categories.indexOf(filter) !== -1;
           card.classList.toggle("is-hidden", !show);
         });
