@@ -174,9 +174,25 @@
   var filterBtns = document.querySelectorAll(".filter-btn");
   var projectCards = document.querySelectorAll(".project-card[data-category]");
 
-  var heroVideo = document.querySelector(".hero-phone__video");
+  var heroVideo = document.getElementById("hero-phone-video");
+  var heroAudioBtn = document.getElementById("hero-phone-audio");
+
   if (heroVideo && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     heroVideo.play().catch(function () {});
+  }
+
+  if (heroVideo && heroAudioBtn) {
+    heroAudioBtn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      var willUnmute = heroVideo.muted;
+      heroVideo.muted = !willUnmute;
+      heroAudioBtn.classList.toggle("is-unmuted", willUnmute);
+      heroAudioBtn.setAttribute("aria-pressed", willUnmute ? "true" : "false");
+      heroAudioBtn.setAttribute("aria-label", willUnmute ? "Silenciar video" : "Activar audio del video");
+      if (willUnmute) {
+        heroVideo.play().catch(function () {});
+      }
+    });
   }
 
   if (filterBtns.length && projectCards.length) {

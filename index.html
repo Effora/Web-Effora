@@ -108,15 +108,26 @@
         </div>
 
         <aside class="hero-media" aria-label="Effora en Instagram">
-          <a class="hero-phone" href="https://www.instagram.com/p/DYnvgieMpBg/" target="_blank" rel="noopener noreferrer" aria-label="Ver video de Effora en Instagram">
-            <span class="hero-phone__shell" aria-hidden="true">
-              <span class="hero-phone__notch"></span>
-              <span class="hero-phone__screen">
-                <video class="hero-phone__video" src="assets/videos/effora-hero-reel.mp4" width="1080" height="1920" muted loop playsinline preload="metadata" aria-hidden="true"></video>
-              </span>
-            </span>
-            <span class="hero-phone__label">Ver en Instagram ↗</span>
-          </a>
+          <div class="hero-phone">
+            <div class="hero-phone__shell">
+              <span class="hero-phone__notch" aria-hidden="true"></span>
+              <div class="hero-phone__screen">
+                <video class="hero-phone__video" id="hero-phone-video" src="assets/videos/effora-hero-reel.mp4" width="1080" height="1920" muted loop playsinline preload="metadata" title="Video de Effora"></video>
+                <button type="button" class="hero-phone__audio" id="hero-phone-audio" aria-label="Activar audio del video" aria-pressed="false">
+                  <svg class="hero-phone__audio-icon hero-phone__audio-icon--muted" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M11 5L6 9H3v6h3l5 4V5z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                    <path d="M16 9l4 4M20 9l-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                  </svg>
+                  <svg class="hero-phone__audio-icon hero-phone__audio-icon--on" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M11 5L6 9H3v6h3l5 4V5z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                    <path d="M15.5 8.5a4.5 4.5 0 010 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                    <path d="M17.8 6.2a7.5 7.5 0 010 11.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <a class="hero-phone__label" href="https://www.instagram.com/p/DYnvgieMpBg/" target="_blank" rel="noopener noreferrer">Ver en Instagram ↗</a>
+          </div>
         </aside>
       </div>
       <div class="hero-grid" aria-hidden="true"></div>
@@ -143,7 +154,7 @@
 
         <div class="project-grid" id="project-grid" aria-live="polite">
           <article class="project-card" data-category="inmobiliario plataforma">
-            <a class="project-card-hit" href="/proyectos/registro-operaciones" target="_blank" rel="noopener noreferrer">
+            <a class="project-card-hit" href="/ficha/registro-operaciones.html" target="_blank" rel="noopener noreferrer">
               <figure class="project-shot">
                 <img src="assets/projects/registro-sistema.jpg" srcset="assets/projects/registro-sistema-sm.jpg 480w, assets/projects/registro-sistema.jpg 960w" sizes="(max-width: 767px) 92vw, (max-width: 1023px) 46vw, 380px" alt="Vista del sistema interno de Registro de Operaciones Inmobiliarias con panel de control." width="960" height="600" loading="lazy" decoding="async">
               </figure>
@@ -159,7 +170,7 @@
           </article>
 
           <article class="project-card" data-category="inmobiliario crm plataforma">
-            <a class="project-card-hit" href="/proyectos/crm-inmobiliario" target="_blank" rel="noopener noreferrer">
+            <a class="project-card-hit" href="/ficha/crm-inmobiliario.html" target="_blank" rel="noopener noreferrer">
               <figure class="project-shot">
                 <img src="assets/projects/crm-seguimiento.jpg" srcset="assets/projects/crm-seguimiento-sm.jpg 480w, assets/projects/crm-seguimiento.jpg 960w" sizes="(max-width: 767px) 92vw, (max-width: 1023px) 46vw, 380px" alt="CRM inmobiliario con ficha de contacto, perfiles múltiples y seguimiento comercial." width="960" height="548" loading="lazy" decoding="async">
               </figure>
@@ -174,7 +185,7 @@
           </article>
 
           <article class="project-card" data-category="plataforma">
-            <a class="project-card-hit" href="/proyectos/dashboard" target="_blank" rel="noopener noreferrer">
+            <a class="project-card-hit" href="/ficha/dashboard.html" target="_blank" rel="noopener noreferrer">
               <figure class="project-shot">
                 <img src="assets/projects/dashboard-tailwind.jpg" srcset="assets/projects/dashboard-tailwind-sm.jpg 480w, assets/projects/dashboard-tailwind.jpg 960w" sizes="(max-width: 767px) 92vw, (max-width: 1023px) 46vw, 380px" alt="Dashboard operativo construido con Tailwind CSS mostrando métricas y gráficos." width="960" height="600" loading="lazy" decoding="async">
               </figure>
@@ -186,7 +197,7 @@
           </article>
 
           <article class="project-card" data-category="plataforma ecommerce">
-            <a class="project-card-hit" href="/proyectos/oube" target="_blank" rel="noopener noreferrer">
+            <a class="project-card-hit" href="/ficha/oube.html" target="_blank" rel="noopener noreferrer">
               <figure class="project-shot">
                 <img src="assets/projects/oube-landing-new.jpg" srcset="assets/projects/oube-landing-new-sm.jpg 480w, assets/projects/oube-landing-new.jpg 960w" sizes="(max-width: 767px) 92vw, (max-width: 1023px) 46vw, 380px" alt="Landing pública de Oube Banda Modular con logo, hero y propuesta comercial." width="960" height="600" loading="lazy" decoding="async">
               </figure>
@@ -201,7 +212,7 @@
           </article>
 
           <article class="project-card" data-category="web plataforma">
-            <a class="project-card-hit" href="/proyectos/melioubi-latam" target="_blank" rel="noopener noreferrer">
+            <a class="project-card-hit" href="/ficha/melioubi-latam.html" target="_blank" rel="noopener noreferrer">
               <figure class="project-shot">
                 <img src="assets/projects/melioubi-latam-home.jpg" srcset="assets/projects/melioubi-latam-home-sm.jpg 480w, assets/projects/melioubi-latam-home.jpg 960w" sizes="(max-width: 767px) 92vw, (max-width: 1023px) 46vw, 380px" alt="Sitio web de Alejandro Mallo con hero de rock en vivo, navegación y embed de Instagram." width="960" height="600" loading="lazy" decoding="async">
               </figure>
@@ -213,7 +224,7 @@
           </article>
 
           <article class="project-card" data-category="rrhh">
-            <a class="project-card-hit" href="/proyectos/nexova" target="_blank" rel="noopener noreferrer">
+            <a class="project-card-hit" href="/ficha/nexova.html" target="_blank" rel="noopener noreferrer">
               <figure class="project-shot">
                 <img src="assets/projects/nexova-formulario.jpg" srcset="assets/projects/nexova-formulario-sm.jpg 480w, assets/projects/nexova-formulario.jpg 960w" sizes="(max-width: 767px) 92vw, (max-width: 1023px) 46vw, 380px" alt="Formulario de postulación accesible con campos de reclutamiento." width="960" height="675" loading="lazy" decoding="async">
               </figure>
@@ -225,7 +236,7 @@
           </article>
 
           <article class="project-card project-card--featured" data-category="inmobiliario">
-            <a class="project-card-hit" href="/proyectos/sistema-ia" target="_blank" rel="noopener noreferrer">
+            <a class="project-card-hit" href="/ficha/sistema-ia.html" target="_blank" rel="noopener noreferrer">
               <figure class="project-shot">
                 <img src="assets/projects/sistema-ia.jpg" srcset="assets/projects/sistema-ia-sm.jpg 480w, assets/projects/sistema-ia.jpg 960w" sizes="(max-width: 767px) 92vw, (max-width: 1023px) 46vw, 380px" alt="Landing del producto Sistema IA del Agente para asesores inmobiliarios." width="960" height="600" loading="lazy" decoding="async">
               </figure>

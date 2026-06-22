@@ -3,7 +3,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const outDir = path.join(__dirname, "..", "proyectos");
+const outDir = path.join(__dirname, "..", "ficha");
 
 const shell = (title, desc, body) => `<!DOCTYPE html>
 <html lang="es">
